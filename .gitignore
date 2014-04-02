@@ -19,3 +19,8 @@
 *.exe
 *.out
 *.app
+
+DataSets.tar.gz
+DataSets/
+Makefile~
+SW-Challenge.pdf
