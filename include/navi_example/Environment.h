@@ -3,33 +3,32 @@
 
 #include <fstream>
 #include <set>
+#include <vector>
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/unordered_set.hpp>
 
 using namespace std;
 
-struct Point{
+struct Cell{
   int x;
   int y;
-  Point() : x(0), y(0) {}
-  Point(int xx, int yy) : x(xx), y(yy) {}
-};
-
-struct PointComp {
-  bool operator() (const Point& lhs, const Point& rhs) const {return (lhs.x+lhs.y)<(rhs.x+rhs.y);}
-};
+  Cell(int cx, int cy);
+}
 
 class Environment{
   public:
-    Environment( ifstream& json );
-  private:
-    Point readTuple( boost::property_tree::ptree& node );
-    boost::property_tree::ptree pt_;
+    typedef boost::shared_ptr<Environment> Ptr;
+    typedef boost::shared_ptr<const Environment> ConstPtr;
 
-    Point start_;
-    Point goal_;
-    set<Point, PointComp> obstacles_;
+    Environment();
+    void readDescription( const ifstream& json );
+    bool isCollisionFree( const Cell& cell );
+
+  private:
+    Cell start_;
+    Cell goal_;
+    boost::unordered_set<Cell> obstacles_;
 };
 
 #endif

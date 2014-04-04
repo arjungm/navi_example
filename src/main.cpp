@@ -6,7 +6,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include "navi_example/Environment.h"
+#include "navi_example/Nav2DGraph.h"
 
 using namespace std;
 
@@ -28,8 +28,10 @@ int main(int argc, char** argv){
 
   if( input_json_file ){
     //use the json file to construct the environment
-    Environment env( input_json_file ); 
+    Nav2DGraph graph;
+    graph.readDescription( input_json_file );
 
+    input_json_file.close();
     //plan on the environment
     //Planner plnr(env);
   }
