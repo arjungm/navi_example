@@ -17,6 +17,7 @@ struct Cell{
   typedef boost::shared_ptr<const Cell> ConstPtr;
   int x;
   int y;
+  Cell();
   Cell(int cx, int cy);
   Cell(vector<int> coords);
 };
@@ -40,7 +41,7 @@ class Environment{
 };
 
 ostream& operator<<(ostream& os, const Cell& cell);
-bool operator==(Cell const& c1, Cell const* c2);
+bool operator==(Cell const& c1, Cell const& c2);
 size_t hash_value(Cell const& c);
 
 #endif

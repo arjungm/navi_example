@@ -8,6 +8,7 @@
 
 using namespace std;
 
+Cell::Cell() : x(0), y(0) {}
 Cell::Cell(int cx, int cy) : x(cx), y(cy) {}
 Cell::Cell(vector<int> coords) : x(0), y(0) {
     //TODO throw exception if wrong size?
