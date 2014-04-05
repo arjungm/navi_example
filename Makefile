@@ -14,6 +14,9 @@ Environment.o: $(SRCDIR)/Environment.cpp
 Graph.o: $(SRCDIR)/Environment.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/Graph.cpp
 
+Planner.o: $(SRCDIR)/Environment.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/Planner.cpp
+
 main.o: $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/main.cpp
 
