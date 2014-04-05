@@ -4,10 +4,10 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/program_options.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
 
 #include "navi_example/Environment.h"
+#include "navi_example/Graph.h"
+#include "navi_example/Planner.h"
 
 using namespace std;
 
@@ -35,7 +35,10 @@ int main(int argc, char** argv){
     input_json_file.close();
 
     //plan on the environment
-    //Planner plnr(env);
+    Graph::Ptr graph = boost::make_shared<Graph>(env);
+    Planner::Ptr plnr = boost::make_shared<Planner>(env, graph);
+
+    plnr->plan();
   }
 
   return 0;
