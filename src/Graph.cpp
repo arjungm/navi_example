@@ -16,7 +16,7 @@ void Graph::getValidSuccessors( const GraphState& state, vector<GraphState>& suc
             GraphState neighbor;
             neighbor.coords.x = state.coords.x + dx;
             neighbor.coords.y = state.coords.y + dy;
-            if(env->isCollisionFree( neighbor.coords )){
+            if(env_->isCollisionFree( neighbor.coords )){
                 successors.push_back(neighbor);
                 costs.push_back(1);
             }
@@ -24,5 +24,5 @@ void Graph::getValidSuccessors( const GraphState& state, vector<GraphState>& suc
     }
 }
 bool Graph::isGoalState( const GraphState& state ){
-    return (state.coords)==(env_->getGoal());
+    return (state.coords)==*(env_->getGoal());
 }

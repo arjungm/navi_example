@@ -11,7 +11,9 @@
 using namespace std;
 
 struct GraphState{
-  Cell coords;
+    typedef boost::shared_ptr<GraphState> Ptr;
+    typedef boost::shared_ptr<const GraphState> ConstPtr;
+    Cell coords;
 };
 
 class Graph{
