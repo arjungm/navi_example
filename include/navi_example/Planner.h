@@ -17,7 +17,10 @@ struct SearchState{
   int h;
   GraphState::Ptr graph_state_;
   SearchState::Ptr parent_;
-}
+
+  SearchState();
+  int operator<(const SearchState& other) const;
+};
 
 class Planner{
   public:
@@ -26,8 +29,12 @@ class Planner{
   private:
     Environment::Ptr env_;
     Graph::Ptr graph_;
-    priority_queue<int, SearchState, greater<int> > open_list_;
+    priority_queue<SearchState> open_list_;
+    boost::unordered_set<SearchState::Ptr, boost::hash<SearchState::Ptr> > search_state_space_;
 };
+
+bool operator==(SearchState::Ptr const& s1, SearchState::Ptr const& s2);
+size_t hash_value(SearchState::Ptr const& s);
 
 #endif
 
