@@ -20,6 +20,7 @@ struct Cell{
   Cell();
   Cell(int cx, int cy);
   Cell(vector<int> coords);
+  Cell& operator=(const Cell& other);
 };
 
 class Environment{

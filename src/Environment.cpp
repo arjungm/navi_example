@@ -26,7 +26,11 @@ size_t hash_value(Cell const& c) {
     boost::hash_combine(seed, c.y);
     return seed;
 }
-
+Cell& Cell::operator=(const Cell& other){
+    x = other.x;
+    y = other.y;
+    return *this;
+}
 
 ostream& operator<<(ostream& os, const Cell& cell)
 {
