@@ -21,7 +21,7 @@ struct SearchState{
 
 class Planner{
   public:
-    Planner(Environment::Ptr env_, Graph::Ptr env_);
+    Planner(Environment::Ptr env_, Graph::Ptr graph_);
     vector<GraphState::Ptr> plan(GraphState::Ptr start);
   private:
     Environment::Ptr env_;
