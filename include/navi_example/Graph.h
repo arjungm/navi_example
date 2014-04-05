@@ -14,6 +14,9 @@ struct GraphState{
     typedef boost::shared_ptr<GraphState> Ptr;
     typedef boost::shared_ptr<const GraphState> ConstPtr;
     Cell coords;
+    
+    GraphState( Cell coordinates );
+    GraphState& operator=( const GraphState& other );
 };
 
 class Graph{
@@ -22,9 +25,10 @@ class Graph{
     typedef boost::shared_ptr<const Graph> ConstPtr;
      
     Graph(Environment::Ptr env);
-    int getHeuristicCost( const GraphState& state );
-    void getValidSuccessors( const GraphState& state, vector<GraphState>& successors, vector<int>& costs );
-    bool isGoalState( const GraphState& state );
+    int getHeuristicCost( const GraphState::Ptr& state );
+    void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<int>& costs );
+    bool isGoalState( const GraphState::Ptr& state );
+    GraphState::Ptr getStart();
   private:
     Environment::Ptr env_;
 };
