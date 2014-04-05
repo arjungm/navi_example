@@ -19,6 +19,8 @@ struct GraphState{
     GraphState& operator=( const GraphState& other );
 };
 
+ostream& operator<<(ostream& os, const GraphState& s);
+
 class Graph{
   public:
     typedef boost::shared_ptr<Graph> Ptr;
