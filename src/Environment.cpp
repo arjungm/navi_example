@@ -17,7 +17,7 @@ Cell::Cell(vector<int> coords) : x(0), y(0) {
 }
 
 bool operator==(Cell const& c1, Cell const& c2){
-    return (c1.x==c2.x) && (c1.y && c2.y);
+    return (c1.x==c2.x) && (c1.y == c2.y);
 }
 
 size_t hash_value(Cell const& c) {
