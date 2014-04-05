@@ -24,5 +24,5 @@ void Graph::getValidSuccessors( const GraphState& state, vector<GraphState>& suc
     }
 }
 bool Graph::isGoalState( const GraphState& state ){
-    return false;
+    return (state.coords)==(env_->getGoal());
 }
