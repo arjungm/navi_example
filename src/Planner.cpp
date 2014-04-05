@@ -16,7 +16,7 @@ size_t hash_value(SearchState::Ptr const& s){
     return 0;
 }
 bool operator<(SearchState::Ptr const& lhs, SearchState::Ptr const& rhs){
-    return (lhs->g + lhs->h)<(rhs->g + rhs->h);
+    return (lhs->g + lhs->h)>(rhs->g + rhs->h);
 }
 GraphState::Ptr SearchState::getGraphState(){
     return graph_state_;
@@ -42,18 +42,24 @@ Planner::Planner(Environment::Ptr env, Graph::Ptr graph): env_(env), graph_(grap
 vector<GraphState::Ptr> Planner::plan(){
     vector<GraphState::Ptr> path;
     
+    bool planning_complete = false;
     typedef pair<SearchState::Ptr,bool> StatePair;
 
-    while(!open_list_.empty()){
+    while(!open_list_.empty() && !planning_complete){
         //pop off open_list
         SearchState::Ptr current = open_list_.front();
         pop_heap(open_list_.begin(), open_list_.end());
         open_list_.pop_back();
 
+        cout << "Expand: " << *(current->getGraphState());
+        cin.get();
+
         //check if goal
         if(graph_->isGoalState(current->getGraphState()) ){
             //unwind path
             //terminate search
+            planning_complete = true;
+            unwind(current, path);
             cout << "Done!" << endl;
         }
         else{
@@ -72,6 +78,8 @@ vector<GraphState::Ptr> Planner::plan(){
                 succ->g = current->g + costs[i];
                 succ->graph_state_ = successors[i];
 
+                cout << "\t" << *(successors[i]) << " g=" << succ->g;
+
                 //check if on open or closed list
                 HashTable::iterator state_pair_it = search_state_space_.find(succ);
                 if(state_pair_it == search_state_space_.end()){
@@ -80,6 +88,7 @@ vector<GraphState::Ptr> Planner::plan(){
                     succ->parent_ = current;
                     open_list_.push_back(succ);
                     push_heap(open_list_.begin(), open_list_.end());
+                    cout << " h=" << succ->h << endl;
                 }
                 else{
                     if(state_pair_it->second.second)//true = open list
@@ -98,6 +107,7 @@ vector<GraphState::Ptr> Planner::plan(){
                     {
                         //do not add
                     }
+                    cout << endl;
                 }
                 
             }
@@ -105,4 +115,13 @@ vector<GraphState::Ptr> Planner::plan(){
     }
      
     return path;    
+}
+
+void Planner::unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& plan){
+    SearchState::Ptr current=state;
+    while(current->parent_){
+        plan.push_back(current->getGraphState());
+        current = current->parent_;
+    }
+    plan.push_back(current->getGraphState());
 }

@@ -37,7 +37,7 @@ class Planner{
     typedef boost::shared_ptr<Planner const> ConstPtr;
     Planner(Environment::Ptr env, Graph::Ptr graph);
     vector<GraphState::Ptr> plan();
-    void unwind(const SearchState::Ptr state, vector<GraphState>& plan);
+    void unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& plan);
   private:
     Environment::Ptr env_;
     Graph::Ptr graph_;
