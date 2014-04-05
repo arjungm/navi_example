@@ -2,11 +2,12 @@
 #include <string>
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/program_options.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include "navi_example/Nav2DGraph.h"
+#include "navi_example/Environment.h"
 
 using namespace std;
 
@@ -28,10 +29,11 @@ int main(int argc, char** argv){
 
   if( input_json_file ){
     //use the json file to construct the environment
-    Nav2DGraph graph;
-    graph.readDescription( input_json_file );
+    Environment::Ptr env = boost::make_shared<Environment>();
+    env->readDescription( input_json_file );
 
     input_json_file.close();
+
     //plan on the environment
     //Planner plnr(env);
   }
