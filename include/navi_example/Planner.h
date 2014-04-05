@@ -2,6 +2,8 @@
 #define PLANNER_H
 
 #include <fstream>
+#include <queue>
+#include <functional>
 
 #include "navi_example/Environment.h"
 #include "navi_example/Graph.h"
@@ -19,7 +21,12 @@ struct SearchState{
 
 class Planner{
   public:
+    Planner(Environment::Ptr env_, Graph::Ptr env_);
+    vector<GraphState::Ptr> plan(GraphState::Ptr start);
   private:
+    Environment::Ptr env_;
+    Graph::Ptr graph_;
+    priority_queue<int, SearchState, greater<int> > open_list_;
 };
 
 #endif
