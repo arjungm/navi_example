@@ -38,7 +38,10 @@ int main(int argc, char** argv){
     Graph::Ptr graph = boost::make_shared<Graph>(env);
     Planner::Ptr plnr = boost::make_shared<Planner>(env, graph);
 
-    plnr->plan();
+    vector<GraphState::Ptr> path = plnr->plan();
+    for(size_t i=0;i<path.size(); i++){
+        cout << *(path[i]) << endl;
+    }
   }
 
   return 0;
