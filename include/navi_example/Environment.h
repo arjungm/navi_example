@@ -23,6 +23,10 @@ struct Cell{
   Cell& operator=(const Cell& other);
 };
 
+ostream& operator<<(ostream& os, const Cell& cell);
+bool operator==(Cell const& c1, Cell const& c2);
+size_t hash_value(Cell const& c);
+
 class Environment{
   public:
     typedef boost::shared_ptr<Environment> Ptr;
@@ -41,8 +45,5 @@ class Environment{
     boost::unordered_set<Cell, boost::hash<Cell> > obstacles_;
 };
 
-ostream& operator<<(ostream& os, const Cell& cell);
-bool operator==(Cell const& c1, Cell const& c2);
-size_t hash_value(Cell const& c);
 
 #endif
