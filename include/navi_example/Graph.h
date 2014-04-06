@@ -27,8 +27,8 @@ class Graph{
     typedef boost::shared_ptr<const Graph> ConstPtr;
      
     Graph(Environment::Ptr env);
-    int getHeuristicCost( const GraphState::Ptr& state );
-    void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<int>& costs );
+    double getHeuristicCost( const GraphState::Ptr& state );
+    void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<double>& costs );
     bool isGoalState( const GraphState::Ptr& state );
     GraphState::Ptr getStart();
   private:
