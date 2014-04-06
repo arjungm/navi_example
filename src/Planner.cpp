@@ -39,33 +39,29 @@ Planner::Planner(Environment::Ptr env, Graph::Ptr graph): env_(env), graph_(grap
     make_heap(open_list_.begin(), open_list_.end());
 }
 
-vector<GraphState::Ptr> Planner::plan(){
-    vector<GraphState::Ptr> path;
+bool Planner::plan(vector<GraphState::Ptr>& path){
     
-    bool planning_complete = false;
+    bool isGoalFound = false;
     typedef pair<SearchState::Ptr,bool> StatePair;
 
     size_t num_expansions = 0;
 
-    while(!open_list_.empty() && !planning_complete){
+    while(!open_list_.empty() && !isGoalFound){
         //pop off open_list
         SearchState::Ptr current = open_list_.front();
         pop_heap(open_list_.begin(), open_list_.end());
         open_list_.pop_back();
 
         num_expansions++;
-        if((num_expansions%10000) == 0){
+        if((num_expansions%1000) == 0){
             cout << "Expansions=" << num_expansions << endl;
         }
         
-        //cout << "Expand: " << *(current->getGraphState()) << " g=" << current->g << " h=" << current->h << " f=" << current->g+current->h;
-        //cout << endl; //cin.get();
-
         //check if goal
         if(graph_->isGoalState(current->getGraphState()) ){
             //unwind path
             //terminate search
-            planning_complete = true;
+            isGoalFound = true;
             unwind(current, path);
             cout << "Done!" << endl;
         }
@@ -120,8 +116,7 @@ vector<GraphState::Ptr> Planner::plan(){
             }
         }
     }
-     
-    return path;    
+    return isGoalFound;
 }
 
 void Planner::unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& plan){
@@ -131,4 +126,5 @@ void Planner::unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& pla
         current = current->parent_;
     }
     plan.push_back(current->getGraphState());
+    reverse(plan.begin(), plan.end());
 }
