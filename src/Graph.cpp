@@ -29,6 +29,9 @@ int Graph::getHeuristicCost( const GraphState::Ptr& state ){
 void Graph::getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<int>& costs ){
     for(int dx=-1; dx<2; dx++){
         for(int dy=-1; dy<2; dy++){
+            if(dx==0 && dx==dy){
+                continue;
+            }
             GraphState::Ptr neighbor = boost::make_shared<GraphState>( Cell(state->coords.x+dx, state->coords.y+dy) );
             if(env_->isCollisionFree( neighbor->coords )){
                 successors.push_back(neighbor);
