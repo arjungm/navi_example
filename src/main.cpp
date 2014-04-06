@@ -11,7 +11,12 @@
 #include "navi_example/Planner.h"
 
 using namespace std;
-
+/**
+ * @brief main function
+ * 
+ * Uses boost program options to read file
+ * Outputs to _sol.txt file
+ */
 int main(int argc, char** argv){
 
   //some program options boilerplate
