@@ -13,7 +13,7 @@ bool operator==(SearchState::Ptr const& s1, SearchState::Ptr const& s2){
     return s1->graph_state_->coords == s2->graph_state_->coords;
 }
 size_t hash_value(SearchState::Ptr const& s){
-    return 0;
+    return hash_value(s->getGraphState()->coords);
 }
 bool operator<(SearchState::Ptr const& lhs, SearchState::Ptr const& rhs){
     return (lhs->g + lhs->h)>(rhs->g + rhs->h);
@@ -45,14 +45,21 @@ vector<GraphState::Ptr> Planner::plan(){
     bool planning_complete = false;
     typedef pair<SearchState::Ptr,bool> StatePair;
 
+    size_t num_expansions = 0;
+
     while(!open_list_.empty() && !planning_complete){
         //pop off open_list
         SearchState::Ptr current = open_list_.front();
         pop_heap(open_list_.begin(), open_list_.end());
         open_list_.pop_back();
 
-        cout << "Expand: " << *(current->getGraphState());
-        cin.get();
+        num_expansions++;
+        if((num_expansions%10000) == 0){
+            cout << "Expansions=" << num_expansions << endl;
+        }
+        
+        //cout << "Expand: " << *(current->getGraphState()) << " g=" << current->g << " h=" << current->h << " f=" << current->g+current->h;
+        //cout << endl; //cin.get();
 
         //check if goal
         if(graph_->isGoalState(current->getGraphState()) ){
@@ -64,11 +71,14 @@ vector<GraphState::Ptr> Planner::plan(){
         }
         else{
             //add current to closed
-            StatePair state_pair = search_state_space_[current];
-            state_pair.second = false;
+            HashTable::iterator state_pair_it = search_state_space_.find(current);
+            if(state_pair_it == search_state_space_.end())
+                cout << "Impossible scenario" << endl;
+            else
+                state_pair_it->second.second = false;
             
             //generate succs
-            vector<int> costs;
+            vector<double> costs;
             vector<GraphState::Ptr> successors;
             graph_->getValidSuccessors( current->getGraphState(), successors, costs );
             
@@ -78,8 +88,6 @@ vector<GraphState::Ptr> Planner::plan(){
                 succ->g = current->g + costs[i];
                 succ->graph_state_ = successors[i];
 
-                cout << "\t" << *(successors[i]) << " g=" << succ->g;
-
                 //check if on open or closed list
                 HashTable::iterator state_pair_it = search_state_space_.find(succ);
                 if(state_pair_it == search_state_space_.end()){
@@ -88,7 +96,7 @@ vector<GraphState::Ptr> Planner::plan(){
                     succ->parent_ = current;
                     open_list_.push_back(succ);
                     push_heap(open_list_.begin(), open_list_.end());
-                    cout << " h=" << succ->h << endl;
+                    search_state_space_[succ] = make_pair(succ,true);
                 }
                 else{
                     if(state_pair_it->second.second)//true = open list
@@ -107,7 +115,6 @@ vector<GraphState::Ptr> Planner::plan(){
                     {
                         //do not add
                     }
-                    cout << endl;
                 }
                 
             }
