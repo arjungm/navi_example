@@ -34,7 +34,7 @@ Cell& Cell::operator=(const Cell& other){
 
 ostream& operator<<(ostream& os, const Cell& cell)
 {
-  os << "(" << cell.x << ", " << cell.y << ")";
+  os << cell.x << ", " << cell.y;
   return os;
 }
 
