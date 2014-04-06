@@ -2,11 +2,11 @@ CC := g++ # This is the main compiler
 CFLAGS := -g -Wall
 
 INCLUDES := -Iinclude
-LFLAGS := -Llib -lboost_program_options
+LFLAGS := -Llib -lboost_program_options -lboost_filesystem -lboost_system
 
 SRCDIR := src
 
-TARGET := bin/navigate
+TARGET := navigate
 
 Environment.o: $(SRCDIR)/Environment.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/Environment.cpp
