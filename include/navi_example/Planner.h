@@ -148,6 +148,10 @@ class Planner{
      * If no Value is returned for a given Key, then this is a brand new state generated
      */
     HashTable search_state_space_;
+    /**
+     * @brief planner epsilon inflation factor
+     */
+    double epsilon_;
 };
 
 

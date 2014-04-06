@@ -25,7 +25,7 @@ void SearchState::setGraphState( const GraphState::Ptr& gstate ){
     graph_state_ = gstate;
 }
 
-Planner::Planner(Environment::Ptr env, Graph::Ptr graph): env_(env), graph_(graph)
+Planner::Planner(Environment::Ptr env, Graph::Ptr graph): env_(env), graph_(graph), epsilon_(1.0)
 {
     //initialize the priority queue
     SearchState::Ptr start_state = boost::make_shared<SearchState>();
@@ -88,7 +88,7 @@ bool Planner::plan(vector<GraphState::Ptr>& path){
                 HashTable::iterator state_pair_it = search_state_space_.find(succ);
                 if(state_pair_it == search_state_space_.end()){
                     //not in open and closed
-                    succ->h = graph_->getHeuristicCost( succ->getGraphState() );
+                    succ->h = epsilon_ * graph_->getHeuristicCost( succ->getGraphState() );
                     succ->parent_ = current;
                     open_list_.push_back(succ);
                     push_heap(open_list_.begin(), open_list_.end());
