@@ -86,3 +86,23 @@ Cell::Ptr Environment::getGoal(){
 Cell::Ptr Environment::getStart(){
     return start_;
 }
+
+ostream& operator<<(ostream& os, const Environment& env){
+    env.printStart(os);
+    env.printGoal(os);
+    env.printObstacles(os);
+    return os;    
+}
+
+void Environment::printObstacles(ostream& os) const {
+    for(boost::unordered_set<Cell, boost::hash<Cell> >::iterator obs_it = obstacles_.begin();
+            obs_it != obstacles_.end(); ++obs_it){
+        os << *obs_it << endl;
+    }
+}
+void Environment::printStart(ostream& os) const {
+    os << *(start_) << endl;
+}
+void Environment::printGoal(ostream& os) const {
+    os << *goal_ << endl;
+}

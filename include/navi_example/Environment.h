@@ -125,6 +125,21 @@ class Environment{
      * @return boost shared pointer to start Cell
      */
     Cell::Ptr getStart();
+    /**
+     * @brief prints obstacles to ostream
+     * @param ostream to print to
+     */
+    void printObstacles(ostream& os) const;
+    /**
+     * @brief prints start to ostream
+     * @param ostream to print to
+     */
+    void printStart(ostream& os) const;
+    /**
+     * @brief prints goal to ostream
+     * @param ostream to print to
+     */
+    void printGoal(ostream& os) const;
 
   private:
     /**
@@ -143,5 +158,7 @@ class Environment{
      */
     boost::unordered_set<Cell, boost::hash<Cell> > obstacles_;
 };
+
+ostream& operator<<(ostream& os, const Environment& env);
 
 #endif
