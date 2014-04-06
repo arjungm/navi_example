@@ -1,0 +1,67 @@
+\hypertarget{struct_graph_state}{\section{\-Graph\-State \-Struct \-Reference}
+\label{struct_graph_state}\index{\-Graph\-State@{\-Graph\-State}}
+}
+
+
+\-Wrapper class for \hyperlink{struct_cell}{\-Cell} class.  
+
+
+
+
+{\ttfamily \#include $<$\-Graph.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_graph_state_af127a4d5f8eb11a26b549872300ffab6}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{struct_graph_state}{\-Graph\-State} $>$ {\bfseries \-Ptr}}\label{struct_graph_state_af127a4d5f8eb11a26b549872300ffab6}
+
+\item 
+\hypertarget{struct_graph_state_a1d1286a93714fe0f2832482bf27d3fcc}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{struct_graph_state}{\-Graph\-State} $>$ {\bfseries \-Const\-Ptr}}\label{struct_graph_state_a1d1286a93714fe0f2832482bf27d3fcc}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_graph_state_adc1780238486cf440e5dff8e17475098}{\-Graph\-State} (\hyperlink{struct_cell}{\-Cell} coordinates)
+\begin{DoxyCompactList}\small\item\em \-Constructor that takes in coordinates as a cell. \end{DoxyCompactList}\item 
+\hypertarget{struct_graph_state_aa64149fdf50125585ddf76b2b795c73d}{\hyperlink{struct_graph_state}{\-Graph\-State} \& \hyperlink{struct_graph_state_aa64149fdf50125585ddf76b2b795c73d}{operator=} (const \hyperlink{struct_graph_state}{\-Graph\-State} \&other)}\label{struct_graph_state_aa64149fdf50125585ddf76b2b795c73d}
+
+\begin{DoxyCompactList}\small\item\em \-Assignment operator overload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_graph_state_a6f914ad5bc7f1fbe27f54cdd52aec8ae}{\hyperlink{struct_cell}{\-Cell} \hyperlink{struct_graph_state_a6f914ad5bc7f1fbe27f54cdd52aec8ae}{coords}}\label{struct_graph_state_a6f914ad5bc7f1fbe27f54cdd52aec8ae}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_environment}{\-Environment} coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Wrapper class for \hyperlink{struct_cell}{\-Cell} class. 
+
+\hyperlink{struct_graph_state}{\-Graph\-State} represents the graph representation of the real world state. \-In our case our real world state is simply a discrete state. \-If it were continuous coordinates then \hyperlink{struct_graph_state}{\-Graph\-State} would take care of discretization of the state space 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{struct_graph_state_adc1780238486cf440e5dff8e17475098}{\index{\-Graph\-State@{\-Graph\-State}!\-Graph\-State@{\-Graph\-State}}
+\index{\-Graph\-State@{\-Graph\-State}!GraphState@{\-Graph\-State}}
+\subsubsection[{\-Graph\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Graph\-State\-::\-Graph\-State} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Cell}}]{coordinates}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_state_adc1780238486cf440e5dff8e17475098}
+
+
+\-Constructor that takes in coordinates as a cell. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em coordinates} & coordinates in the environment \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Graph.\-h\item 
+src/\-Graph.\-cpp\end{DoxyCompactItemize}

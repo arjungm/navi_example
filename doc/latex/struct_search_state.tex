@@ -1,0 +1,105 @@
+\hypertarget{struct_search_state}{\section{\-Search\-State \-Struct \-Reference}
+\label{struct_search_state}\index{\-Search\-State@{\-Search\-State}}
+}
+
+
+\-Wrapper struct for \hyperlink{struct_graph_state}{\-Graph\-State} which bundles it with g and h values.  
+
+
+
+
+{\ttfamily \#include $<$\-Planner.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_search_state_a224730930b9015a402793ad7fdaa3dae}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{struct_search_state}{\-Search\-State} $>$ {\bfseries \-Ptr}}\label{struct_search_state_a224730930b9015a402793ad7fdaa3dae}
+
+\item 
+\hypertarget{struct_search_state_ad4da46c4219dacf06fa3bcc7332b8826}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{struct_search_state}{\-Search\-State} $>$ {\bfseries \-Const\-Ptr}}\label{struct_search_state_ad4da46c4219dacf06fa3bcc7332b8826}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_search_state_afabe4bfbc9658c0e9d2a4a6a452cee3f}{\-Search\-State} ()
+\begin{DoxyCompactList}\small\item\em \-Empty constructor. \end{DoxyCompactList}\item 
+\-Graph\-State\-::\-Ptr \hyperlink{struct_search_state_a7681f5297abe522b586815bc32d20795}{get\-Graph\-State} ()
+\begin{DoxyCompactList}\small\item\em getter for the \hyperlink{struct_graph_state}{\-Graph\-State} \end{DoxyCompactList}\item 
+void \hyperlink{struct_search_state_a93576ac604beb57d4c09f0ff3a0587c9}{set\-Graph\-State} (const \-Graph\-State\-::\-Ptr \&gstate)
+\begin{DoxyCompactList}\small\item\em setter for the \hyperlink{struct_graph_state}{\-Graph\-State} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_search_state_ae9e94610d90e5c170fd526616a7e76c0}{double \hyperlink{struct_search_state_ae9e94610d90e5c170fd526616a7e76c0}{g}}\label{struct_search_state_ae9e94610d90e5c170fd526616a7e76c0}
+
+\begin{DoxyCompactList}\small\item\em cost to come for the state \end{DoxyCompactList}\item 
+\hypertarget{struct_search_state_ab7787161bd4feed172ba342999333132}{double \hyperlink{struct_search_state_ab7787161bd4feed172ba342999333132}{h}}\label{struct_search_state_ab7787161bd4feed172ba342999333132}
+
+\begin{DoxyCompactList}\small\item\em cost to go for the state \end{DoxyCompactList}\item 
+\hypertarget{struct_search_state_ac6770b98c7aec2eea4c15c8cf1c7e92a}{\-Graph\-State\-::\-Ptr \hyperlink{struct_search_state_ac6770b98c7aec2eea4c15c8cf1c7e92a}{graph\-\_\-state\-\_\-}}\label{struct_search_state_ac6770b98c7aec2eea4c15c8cf1c7e92a}
+
+\begin{DoxyCompactList}\small\item\em the underlying graph state of the search state \end{DoxyCompactList}\item 
+\hypertarget{struct_search_state_ac1cad42afd15a5bcc22ec6b658040c34}{\-Search\-State\-::\-Ptr \hyperlink{struct_search_state_ac1cad42afd15a5bcc22ec6b658040c34}{parent\-\_\-}}\label{struct_search_state_ac1cad42afd15a5bcc22ec6b658040c34}
+
+\begin{DoxyCompactList}\small\item\em pointer to the parent search state that generated this \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Wrapper struct for \hyperlink{struct_graph_state}{\-Graph\-State} which bundles it with g and h values. 
+
+\-This class is used in the actual search algorithm and helps with path unwinding. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{struct_search_state_afabe4bfbc9658c0e9d2a4a6a452cee3f}{\index{\-Search\-State@{\-Search\-State}!\-Search\-State@{\-Search\-State}}
+\index{\-Search\-State@{\-Search\-State}!SearchState@{\-Search\-State}}
+\subsubsection[{\-Search\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Search\-State\-::\-Search\-State} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{struct_search_state_afabe4bfbc9658c0e9d2a4a6a452cee3f}
+
+
+\-Empty constructor. 
+
+\-Defaults coordinates to (0,0) and g and h to 0 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{struct_search_state_a7681f5297abe522b586815bc32d20795}{\index{\-Search\-State@{\-Search\-State}!get\-Graph\-State@{get\-Graph\-State}}
+\index{get\-Graph\-State@{get\-Graph\-State}!SearchState@{\-Search\-State}}
+\subsubsection[{get\-Graph\-State}]{\setlength{\rightskip}{0pt plus 5cm}\-Graph\-State\-::\-Ptr {\bf \-Search\-State\-::get\-Graph\-State} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{struct_search_state_a7681f5297abe522b586815bc32d20795}
+
+
+getter for the \hyperlink{struct_graph_state}{\-Graph\-State} 
+
+\begin{DoxyReturn}{\-Returns}
+pointer to \hyperlink{struct_graph_state}{\-Graph\-State} 
+\end{DoxyReturn}
+\hypertarget{struct_search_state_a93576ac604beb57d4c09f0ff3a0587c9}{\index{\-Search\-State@{\-Search\-State}!set\-Graph\-State@{set\-Graph\-State}}
+\index{set\-Graph\-State@{set\-Graph\-State}!SearchState@{\-Search\-State}}
+\subsubsection[{set\-Graph\-State}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Search\-State\-::set\-Graph\-State} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{gstate}
+\end{DoxyParamCaption}
+)}}\label{struct_search_state_a93576ac604beb57d4c09f0ff3a0587c9}
+
+
+setter for the \hyperlink{struct_graph_state}{\-Graph\-State} 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em gstate} & pointer to the graph state to set it to \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Planner.\-h\item 
+src/\-Planner.\-cpp\end{DoxyCompactItemize}

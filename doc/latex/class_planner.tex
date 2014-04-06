@@ -1,0 +1,113 @@
+\hypertarget{class_planner}{\section{\-Planner \-Class \-Reference}
+\label{class_planner}\index{\-Planner@{\-Planner}}
+}
+
+
+\hyperlink{class_planner}{\-Planner} class that uses the \hyperlink{class_environment}{\-Environment} and \hyperlink{class_graph}{\-Graph} to conduct a search.  
+
+
+
+
+{\ttfamily \#include $<$\-Planner.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_planner_adf0808cafd0a2fc6e8d268eabf00386e}{typedef boost\-::unordered\-\_\-map\*
+$<$ \-Search\-State\-::\-Ptr, pair\*
+$<$ \-Search\-State\-::\-Ptr, bool $>$ $>$ {\bfseries \-Hash\-Table}}\label{class_planner_adf0808cafd0a2fc6e8d268eabf00386e}
+
+\item 
+\hypertarget{class_planner_a94cb7df7e883a1efac1a21daa52a96f5}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{class_planner}{\-Planner} $>$ {\bfseries \-Ptr}}\label{class_planner_a94cb7df7e883a1efac1a21daa52a96f5}
+
+\item 
+\hypertarget{class_planner_a9a21451487b9d05b36d3931bfae80d74}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{class_planner}{\-Planner} const  $>$ {\bfseries \-Const\-Ptr}}\label{class_planner_a9a21451487b9d05b36d3931bfae80d74}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_planner_ab7ced6e144f0ca732c59e1e34de2382b}{\-Planner} (\-Environment\-::\-Ptr env, \-Graph\-::\-Ptr graph)
+\begin{DoxyCompactList}\small\item\em constructor for the planner \end{DoxyCompactList}\item 
+bool \hyperlink{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{plan} (vector$<$ \-Graph\-State\-::\-Ptr $>$ \&path)
+\begin{DoxyCompactList}\small\item\em starts the planner to search for a path \end{DoxyCompactList}\item 
+void \hyperlink{class_planner_aa054eca4b15676cc7e3d334e6bae5609}{unwind} (const \-Search\-State\-::\-Ptr \&state, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&\hyperlink{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{plan})
+\begin{DoxyCompactList}\small\item\em helper function for unrolling the discovered path \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{class_planner}{\-Planner} class that uses the \hyperlink{class_environment}{\-Environment} and \hyperlink{class_graph}{\-Graph} to conduct a search. 
+
+\hyperlink{class_planner}{\-Planner} uses \hyperlink{class_graph}{\-Graph} to get successors and compute heuristics. \-It manages the priority queue for the search (sorting based on g+h) and also the closed list by using a boost hash table that maps to boolean values of whether a state is open/closed 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_planner_ab7ced6e144f0ca732c59e1e34de2382b}{\index{\-Planner@{\-Planner}!\-Planner@{\-Planner}}
+\index{\-Planner@{\-Planner}!Planner@{\-Planner}}
+\subsubsection[{\-Planner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Planner\-::\-Planner} (
+\begin{DoxyParamCaption}
+\item[{\-Environment\-::\-Ptr}]{env, }
+\item[{\-Graph\-::\-Ptr}]{graph}
+\end{DoxyParamCaption}
+)}}\label{class_planner_ab7ced6e144f0ca732c59e1e34de2382b}
+
+
+constructor for the planner 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em env} & \hyperlink{class_environment}{\-Environment} pointer \\
+\hline
+{\em graph} & \hyperlink{class_graph}{\-Graph} pointer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{\index{\-Planner@{\-Planner}!plan@{plan}}
+\index{plan@{plan}!Planner@{\-Planner}}
+\subsubsection[{plan}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Planner\-::plan} (
+\begin{DoxyParamCaption}
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}
+
+
+starts the planner to search for a path 
+
+\begin{DoxyReturn}{\-Returns}
+whether a path was found 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{\-Parameters}
+{\em path} & the path in \-Graph\-States from start to goal \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_planner_aa054eca4b15676cc7e3d334e6bae5609}{\index{\-Planner@{\-Planner}!unwind@{unwind}}
+\index{unwind@{unwind}!Planner@{\-Planner}}
+\subsubsection[{unwind}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Planner\-::unwind} (
+\begin{DoxyParamCaption}
+\item[{const \-Search\-State\-::\-Ptr \&}]{state, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{plan}
+\end{DoxyParamCaption}
+)}}\label{class_planner_aa054eca4b15676cc7e3d334e6bae5609}
+
+
+helper function for unrolling the discovered path 
+
+\-Uses parent pointers to previous states to build the path
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & the state to start unrolling from \\
+\hline
+{\em plan} & the list of graph states in the plan \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Planner.\-h\item 
+src/\-Planner.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,128 @@
+\hypertarget{class_graph}{\section{\-Graph \-Class \-Reference}
+\label{class_graph}\index{\-Graph@{\-Graph}}
+}
+
+
+\-Intermediate class between environment and planner.  
+
+
+
+
+{\ttfamily \#include $<$\-Graph.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_graph_af4923b657730669fca5b7922bf336c4c}{typedef boost\-::shared\-\_\-ptr$<$ \hyperlink{class_graph}{\-Graph} $>$ {\bfseries \-Ptr}}\label{class_graph_af4923b657730669fca5b7922bf336c4c}
+
+\item 
+\hypertarget{class_graph_ac8025fde49dceda321849fb499606896}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{class_graph}{\-Graph} $>$ {\bfseries \-Const\-Ptr}}\label{class_graph_ac8025fde49dceda321849fb499606896}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_graph_af17d59fad8e889152f8367600d1a6094}{\hyperlink{class_graph_af17d59fad8e889152f8367600d1a6094}{\-Graph} (\-Environment\-::\-Ptr env)}\label{class_graph_af17d59fad8e889152f8367600d1a6094}
+
+\begin{DoxyCompactList}\small\item\em \-Constructor for \hyperlink{class_graph}{\-Graph} that takes in an environment pointer. \end{DoxyCompactList}\item 
+double \hyperlink{class_graph_a24c1e21da4bb89a29539a2a1d3c6baed}{get\-Heuristic\-Cost} (const \-Graph\-State\-::\-Ptr \&state)
+\begin{DoxyCompactList}\small\item\em gets the heuristic cost to the goal from the current state \end{DoxyCompactList}\item 
+void \hyperlink{class_graph_a52790947468f8dbfa5c28bc1de1ba9b8}{get\-Valid\-Successors} (const \-Graph\-State\-::\-Ptr \&state, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&successors, vector$<$ double $>$ \&costs)
+\begin{DoxyCompactList}\small\item\em gets the connected successors from the current state \end{DoxyCompactList}\item 
+bool \hyperlink{class_graph_a25beff23a7b3791bc9828e5533ecc45c}{is\-Goal\-State} (const \-Graph\-State\-::\-Ptr \&state)
+\begin{DoxyCompactList}\small\item\em checks if given state is a goal state \end{DoxyCompactList}\item 
+\-Graph\-State\-::\-Ptr \hyperlink{class_graph_a4de6e40cf94df5ae1e164d361e2ebac2}{get\-Start} ()
+\begin{DoxyCompactList}\small\item\em gets the start state \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Intermediate class between environment and planner. 
+
+\hyperlink{class_graph}{\-Graph} handles generating successors from a given state in the graph and it also computers the heuristic for a given state in the graph.
+
+\-In order to extend \hyperlink{class_graph}{\-Graph} to have more nuanced motion primitves then a \-Motion\-Primitive class should be implemented, which would be used by \hyperlink{class_environment}{\-Environment} to generate real world successors. \hyperlink{class_graph}{\-Graph} would then discretize them to the appropriate \hyperlink{struct_graph_state}{\-Graph\-State}. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_graph_a24c1e21da4bb89a29539a2a1d3c6baed}{\index{\-Graph@{\-Graph}!get\-Heuristic\-Cost@{get\-Heuristic\-Cost}}
+\index{get\-Heuristic\-Cost@{get\-Heuristic\-Cost}!Graph@{\-Graph}}
+\subsubsection[{get\-Heuristic\-Cost}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Graph\-::get\-Heuristic\-Cost} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a24c1e21da4bb89a29539a2a1d3c6baed}
+
+
+gets the heuristic cost to the goal from the current state 
+
+\-Uses euclidean distance between the coordinates of current and goal state 
+\begin{DoxyParams}{\-Parameters}
+{\em state} & current state pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+heuristic cost to the goal state 
+\end{DoxyReturn}
+\hypertarget{class_graph_a4de6e40cf94df5ae1e164d361e2ebac2}{\index{\-Graph@{\-Graph}!get\-Start@{get\-Start}}
+\index{get\-Start@{get\-Start}!Graph@{\-Graph}}
+\subsubsection[{get\-Start}]{\setlength{\rightskip}{0pt plus 5cm}\-Graph\-State\-::\-Ptr {\bf \-Graph\-::get\-Start} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a4de6e40cf94df5ae1e164d361e2ebac2}
+
+
+gets the start state 
+
+\begin{DoxyReturn}{\-Returns}
+pointer to the start state 
+\end{DoxyReturn}
+\hypertarget{class_graph_a52790947468f8dbfa5c28bc1de1ba9b8}{\index{\-Graph@{\-Graph}!get\-Valid\-Successors@{get\-Valid\-Successors}}
+\index{get\-Valid\-Successors@{get\-Valid\-Successors}!Graph@{\-Graph}}
+\subsubsection[{get\-Valid\-Successors}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::get\-Valid\-Successors} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{successors, }
+\item[{vector$<$ double $>$ \&}]{costs}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a52790947468f8dbfa5c28bc1de1ba9b8}
+
+
+gets the connected successors from the current state 
+
+\-Uses the 8-\/connected fashion for a given cell to determine its neighbors. \-Then it checks if those neighbors are collision free. \-Cost of the motion is the \-Grid world displacement in the coordinates
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & current state \\
+\hline
+{\em successors} & variable size list of \hyperlink{struct_graph_state}{\-Graph\-State} pointers that are valid (collision free) neighbors \\
+\hline
+{\em costs} & variable size list of costs for moving from the current state to the successor. \-For diagonal motions the cost is higher. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graph_a25beff23a7b3791bc9828e5533ecc45c}{\index{\-Graph@{\-Graph}!is\-Goal\-State@{is\-Goal\-State}}
+\index{is\-Goal\-State@{is\-Goal\-State}!Graph@{\-Graph}}
+\subsubsection[{is\-Goal\-State}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::is\-Goal\-State} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a25beff23a7b3791bc9828e5533ecc45c}
+
+
+checks if given state is a goal state 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & current state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether the current state is a goal 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Graph.\-h\item 
+src/\-Graph.\-cpp\end{DoxyCompactItemize}

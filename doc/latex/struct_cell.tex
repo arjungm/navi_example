@@ -1,0 +1,119 @@
+\hypertarget{struct_cell}{\section{\-Cell \-Struct \-Reference}
+\label{struct_cell}\index{\-Cell@{\-Cell}}
+}
+
+
+\-Struct to wrap grid world coordinates.  
+
+
+
+
+{\ttfamily \#include $<$\-Environment.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_cell_aad39d5dee4e425f0969cf18c606feff9}{typedef boost\-::shared\-\_\-ptr$<$ \hyperlink{struct_cell}{\-Cell} $>$ {\bfseries \-Ptr}}\label{struct_cell_aad39d5dee4e425f0969cf18c606feff9}
+
+\item 
+\hypertarget{struct_cell_a68e568cf815bfcf579f3df96721b030f}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{struct_cell}{\-Cell} $>$ {\bfseries \-Const\-Ptr}}\label{struct_cell_a68e568cf815bfcf579f3df96721b030f}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_cell_a394510643e8664cf12b5efaf5cb99f71}{\-Cell} ()
+\begin{DoxyCompactList}\small\item\em \-Empty constructor. \end{DoxyCompactList}\item 
+\hyperlink{struct_cell_a6d6d45beb3605fa91a4fde164ca1f2e7}{\-Cell} (int cx, int cy)
+\begin{DoxyCompactList}\small\item\em \-Constructor that takes individual coordinates. \end{DoxyCompactList}\item 
+\hyperlink{struct_cell_a26337b4abd24ec554fc4df0c20599fc3}{\-Cell} (vector$<$ int $>$ coords)
+\begin{DoxyCompactList}\small\item\em \-Constructor that takes coordinates as a vector. \end{DoxyCompactList}\item 
+\hyperlink{struct_cell}{\-Cell} \& \hyperlink{struct_cell_ac1c53fcae0c0be453d0312310ed80fc9}{operator=} (const \hyperlink{struct_cell}{\-Cell} \&other)
+\begin{DoxyCompactList}\small\item\em \-Assignment operator overload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_cell_ac008158796a0bfdf37be2f26eff651ef}{int \hyperlink{struct_cell_ac008158796a0bfdf37be2f26eff651ef}{x}}\label{struct_cell_ac008158796a0bfdf37be2f26eff651ef}
+
+\begin{DoxyCompactList}\small\item\em x coordinate \end{DoxyCompactList}\item 
+\hypertarget{struct_cell_ab99a0cead05c6b8129ddf3231b11c1ad}{int \hyperlink{struct_cell_ab99a0cead05c6b8129ddf3231b11c1ad}{y}}\label{struct_cell_ab99a0cead05c6b8129ddf3231b11c1ad}
+
+\begin{DoxyCompactList}\small\item\em y coordinate \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Struct to wrap grid world coordinates. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{struct_cell_a394510643e8664cf12b5efaf5cb99f71}{\index{\-Cell@{\-Cell}!\-Cell@{\-Cell}}
+\index{\-Cell@{\-Cell}!Cell@{\-Cell}}
+\subsubsection[{\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cell\-::\-Cell} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{struct_cell_a394510643e8664cf12b5efaf5cb99f71}
+
+
+\-Empty constructor. 
+
+\-X and \-Y are set to 0. \hypertarget{struct_cell_a6d6d45beb3605fa91a4fde164ca1f2e7}{\index{\-Cell@{\-Cell}!\-Cell@{\-Cell}}
+\index{\-Cell@{\-Cell}!Cell@{\-Cell}}
+\subsubsection[{\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cell\-::\-Cell} (
+\begin{DoxyParamCaption}
+\item[{int}]{cx, }
+\item[{int}]{cy}
+\end{DoxyParamCaption}
+)}}\label{struct_cell_a6d6d45beb3605fa91a4fde164ca1f2e7}
+
+
+\-Constructor that takes individual coordinates. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em cx} & x coordinate \\
+\hline
+{\em cy} & y coordinate \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_cell_a26337b4abd24ec554fc4df0c20599fc3}{\index{\-Cell@{\-Cell}!\-Cell@{\-Cell}}
+\index{\-Cell@{\-Cell}!Cell@{\-Cell}}
+\subsubsection[{\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cell\-::\-Cell} (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{coords}
+\end{DoxyParamCaption}
+)}}\label{struct_cell_a26337b4abd24ec554fc4df0c20599fc3}
+
+
+\-Constructor that takes coordinates as a vector. 
+
+\-T\-O\-D\-O \-If the number of elements in the vector are wrong then it should throw an exception. 
+\begin{DoxyParams}{\-Parameters}
+{\em coords} & vector of coordinates \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{struct_cell_ac1c53fcae0c0be453d0312310ed80fc9}{\index{\-Cell@{\-Cell}!operator=@{operator=}}
+\index{operator=@{operator=}!Cell@{\-Cell}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cell} \& \-Cell\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Cell} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{struct_cell_ac1c53fcae0c0be453d0312310ed80fc9}
+
+
+\-Assignment operator overload. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & another \hyperlink{struct_cell}{\-Cell} instance \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Environment.\-h\item 
+src/\-Environment.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,138 @@
+\hypertarget{class_environment}{\section{\-Environment \-Class \-Reference}
+\label{class_environment}\index{\-Environment@{\-Environment}}
+}
+
+
+\-Class for the unbounded 2\-D gridded environment.  
+
+
+
+
+{\ttfamily \#include $<$\-Environment.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_environment_a53eb6336aaf9502342b7b64fc4ba3036}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{class_environment}{\-Environment} $>$ {\bfseries \-Ptr}}\label{class_environment_a53eb6336aaf9502342b7b64fc4ba3036}
+
+\item 
+\hypertarget{class_environment_acdfb7fa4f2b58fa21e752cfa22f2bb8f}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{class_environment}{\-Environment} $>$ {\bfseries \-Const\-Ptr}}\label{class_environment_acdfb7fa4f2b58fa21e752cfa22f2bb8f}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_environment_a8b427c4448d8b7536666837521b9e83d}{\hyperlink{class_environment_a8b427c4448d8b7536666837521b9e83d}{\-Environment} ()}\label{class_environment_a8b427c4448d8b7536666837521b9e83d}
+
+\begin{DoxyCompactList}\small\item\em \-Empty constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_environment_a79909fe4c211b4cf8de7108fe4b01946}{read\-Description} (const ifstream \&json)
+\begin{DoxyCompactList}\small\item\em reads in the environment description from json file \end{DoxyCompactList}\item 
+bool \hyperlink{class_environment_a3c7c3a42c761f7b44a65cd54df53aee6}{is\-Collision\-Free} (const \hyperlink{struct_cell}{\-Cell} \&cell)
+\begin{DoxyCompactList}\small\item\em checks if a given \hyperlink{struct_cell}{\-Cell} is unoccupied \end{DoxyCompactList}\item 
+vector$<$ int $>$ \hyperlink{class_environment_a51c86c03c10f50b7fc366b134d66fdae}{read\-Coordinates} (boost\-::property\-\_\-tree\-::ptree \&node)
+\begin{DoxyCompactList}\small\item\em helper function for reading in coordinates from the property tree \end{DoxyCompactList}\item 
+\-Cell\-::\-Ptr \hyperlink{class_environment_a1eb91b74ba211896d9de8ac89da308ef}{get\-Goal} ()
+\begin{DoxyCompactList}\small\item\em getter for goal cell \end{DoxyCompactList}\item 
+\-Cell\-::\-Ptr \hyperlink{class_environment_adb44973d4cd3252e64e1c225c87ecd36}{get\-Start} ()
+\begin{DoxyCompactList}\small\item\em getter for start cell \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class for the unbounded 2\-D gridded environment. 
+
+\-It handles collision checking of \-Cells, and maintains a set of \-Cells that are occupied for fast collision checking. \-It also stores the start and goal cells. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_environment_a1eb91b74ba211896d9de8ac89da308ef}{\index{\-Environment@{\-Environment}!get\-Goal@{get\-Goal}}
+\index{get\-Goal@{get\-Goal}!Environment@{\-Environment}}
+\subsubsection[{get\-Goal}]{\setlength{\rightskip}{0pt plus 5cm}\-Cell\-::\-Ptr {\bf \-Environment\-::get\-Goal} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_environment_a1eb91b74ba211896d9de8ac89da308ef}
+
+
+getter for goal cell 
+
+\begin{DoxyReturn}{\-Returns}
+boost shared pointer to goal \hyperlink{struct_cell}{\-Cell} 
+\end{DoxyReturn}
+\hypertarget{class_environment_adb44973d4cd3252e64e1c225c87ecd36}{\index{\-Environment@{\-Environment}!get\-Start@{get\-Start}}
+\index{get\-Start@{get\-Start}!Environment@{\-Environment}}
+\subsubsection[{get\-Start}]{\setlength{\rightskip}{0pt plus 5cm}\-Cell\-::\-Ptr {\bf \-Environment\-::get\-Start} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_environment_adb44973d4cd3252e64e1c225c87ecd36}
+
+
+getter for start cell 
+
+\begin{DoxyReturn}{\-Returns}
+boost shared pointer to start \hyperlink{struct_cell}{\-Cell} 
+\end{DoxyReturn}
+\hypertarget{class_environment_a3c7c3a42c761f7b44a65cd54df53aee6}{\index{\-Environment@{\-Environment}!is\-Collision\-Free@{is\-Collision\-Free}}
+\index{is\-Collision\-Free@{is\-Collision\-Free}!Environment@{\-Environment}}
+\subsubsection[{is\-Collision\-Free}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Environment\-::is\-Collision\-Free} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Cell} \&}]{cell}
+\end{DoxyParamCaption}
+)}}\label{class_environment_a3c7c3a42c761f7b44a65cd54df53aee6}
+
+
+checks if a given \hyperlink{struct_cell}{\-Cell} is unoccupied 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em cell} & \hyperlink{struct_cell}{\-Cell} to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether it is free 
+\end{DoxyReturn}
+\hypertarget{class_environment_a51c86c03c10f50b7fc366b134d66fdae}{\index{\-Environment@{\-Environment}!read\-Coordinates@{read\-Coordinates}}
+\index{read\-Coordinates@{read\-Coordinates}!Environment@{\-Environment}}
+\subsubsection[{read\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ {\bf \-Environment\-::read\-Coordinates} (
+\begin{DoxyParamCaption}
+\item[{boost\-::property\-\_\-tree\-::ptree \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_environment_a51c86c03c10f50b7fc366b134d66fdae}
+
+
+helper function for reading in coordinates from the property tree 
+
+\begin{DoxySeeAlso}{\-See also}
+\hyperlink{class_environment_a79909fe4c211b4cf8de7108fe4b01946}{read\-Description()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{\-Parameters}
+{\em node} & boost property tree containing two integers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+variable length vector of coordinates (should always be 2 if the file is good) 
+\end{DoxyReturn}
+\hypertarget{class_environment_a79909fe4c211b4cf8de7108fe4b01946}{\index{\-Environment@{\-Environment}!read\-Description@{read\-Description}}
+\index{read\-Description@{read\-Description}!Environment@{\-Environment}}
+\subsubsection[{read\-Description}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Environment\-::read\-Description} (
+\begin{DoxyParamCaption}
+\item[{const ifstream \&}]{json}
+\end{DoxyParamCaption}
+)}}\label{class_environment_a79909fe4c211b4cf8de7108fe4b01946}
+
+
+reads in the environment description from json file 
+
+records all the obstacles and start and goal coordinates 
+\begin{DoxyParams}{\-Parameters}
+{\em json} & ifstream of the json file \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Environment.\-h\item 
+src/\-Environment.\-cpp\end{DoxyCompactItemize}
