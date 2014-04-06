@@ -23,6 +23,7 @@ int main(int argc, char** argv){
   namespace po = boost::program_options; 
   po::options_description desc("Vanilla Navigation Planner Usage"); 
   desc.add_options() 
+    ("vis,v","mode to rewrite the json files into readable format for matlab")
     ("env,e",po::value<string>()->required(),"input environment json file"); 
   po::variables_map vm;
   po::store(po::command_line_parser(argc, argv).options(desc).run(), vm);
@@ -44,34 +45,45 @@ int main(int argc, char** argv){
     env->readDescription( input_json_file );
 
     input_json_file.close();
-
-    //plan on the environment
-    Graph::Ptr graph = boost::make_shared<Graph>(env);
-    Planner::Ptr plnr = boost::make_shared<Planner>(env, graph);
-
-    vector<GraphState::Ptr> path;
-    
-    //call planner
-    bool plannerResult = plnr->plan(path);
-    
-    if(plannerResult){
-        //output plan to file
+    if(vm.count("vis")){
         boost::filesystem::path parent_dir = json_file.parent_path();
-        boost::filesystem::path solution_filename(json_file.stem().string()+"_sol.txt");
+        boost::filesystem::path solution_filename(json_file.stem().string()+"_vis.txt");
         boost::filesystem::path solution_filepath = parent_dir / solution_filename;
-
-        printf("Writing out solution to: %s\n", solution_filepath.string().c_str());
+        
         ofstream ofs;
         ofs.open( solution_filepath.string().c_str() );
-        
-        for(size_t i=0; i<path.size(); i++){
-            ofs << *(path[i]) << endl;
-        }
+        ofs << *env; 
         ofs.close();
     }
     else{
-        //
-        cout << "No plan found!" << endl;
+        //plan on the environment
+        Graph::Ptr graph = boost::make_shared<Graph>(env);
+        Planner::Ptr plnr = boost::make_shared<Planner>(env, graph);
+
+        vector<GraphState::Ptr> path;
+
+        //call planner
+        bool plannerResult = plnr->plan(path);
+
+        if(plannerResult){
+            //output plan to file
+            boost::filesystem::path parent_dir = json_file.parent_path();
+            boost::filesystem::path solution_filename(json_file.stem().string()+"_sol.txt");
+            boost::filesystem::path solution_filepath = parent_dir / solution_filename;
+
+            printf("Writing out solution to: %s\n", solution_filepath.string().c_str());
+            ofstream ofs;
+            ofs.open( solution_filepath.string().c_str() );
+
+            for(size_t i=0; i<path.size(); i++){
+                ofs << *(path[i]) << endl;
+            }
+            ofs.close();
+        }
+        else{
+            //
+            cout << "No plan found!" << endl;
+        }
     }
   }
 
