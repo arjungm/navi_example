@@ -16,8 +16,8 @@ using namespace std;
 struct SearchState{
   typedef boost::shared_ptr<SearchState> Ptr;
   typedef boost::shared_ptr<const SearchState> ConstPtr;
-  int g;
-  int h;
+  double g;
+  double h;
   GraphState::Ptr graph_state_;
   SearchState::Ptr parent_;
 
