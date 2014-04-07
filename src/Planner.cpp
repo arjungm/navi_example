@@ -52,8 +52,8 @@ bool Planner::plan(vector<GraphState::Ptr>& path){
         pop_heap(open_list_.begin(), open_list_.end());
         open_list_.pop_back();
         
-        if( current->parent_ )
-            cout << *(current->parent_->getGraphState()) << ", " << *(current->getGraphState()) << endl;
+        //if( current->parent_ )
+        //    cout << *(current->parent_->getGraphState()) << ", " << *(current->getGraphState()) << endl;
 
         num_expansions++;
         if((num_expansions%1000) == 0){
