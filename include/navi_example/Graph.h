@@ -86,6 +86,12 @@ class Graph{
      * @param costs variable size list of costs for moving from the current state to the successor. For diagonal motions the cost is higher.
      */
     void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<double>& costs );
+    void getJumpPointSuccessors( const GraphState::Ptr& state, const GraphState::Ptr& parent, vector<GraphState::Ptr>& successors, vector<double>& costs );
+    void getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& successors, vector<double>& costs );
+    bool jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost);
+    bool jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost);
+    bool hasForced (const GraphState::Ptr& state,  const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs );
+
     /**
      * @brief checks if given state is a goal state
      * @param state current state
@@ -104,6 +110,7 @@ class Graph{
      * used for collision checking generated GraphState
      */
     Environment::Ptr env_;
+    bool verbose;
 };
 
 #endif
