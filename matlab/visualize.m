@@ -1,24 +1,23 @@
+
 fname = '../DataSets/set1_vis.txt';
-data = dlmread(fname);
-subplot(2,3,1)
-plotdata(data);
+sname = '../DataSets/set1_sol.txt';
+iname = '../DataSets/set1_sol.png';
 
-fname = '../DataSets/set2_vis.txt';
-data = dlmread(fname);
-subplot(2,3,2)
-plotdata(data);
+for i=1:5
 
-fname = '../DataSets/set3_vis.txt';
-data = dlmread(fname);
-subplot(2,3,3)
-plotdata(data);
+f = figure('visible','off');
 
-fname = '../DataSets/set4_vis.txt';
-data = dlmread(fname);
-subplot(2,3,4)
-plotdata(data);
+fname(16) = num2str(i);
+env = dlmread(fname);
+plotdata(env);
 
-fname = '../DataSets/set5_vis.txt';
-data = dlmread(fname);
-subplot(2,3,5)
-plotdata(data);
+sname(16) = num2str(i);
+sol = dlmread(sname);
+plot(sol(:,1), sol(:,2), 'r');
+
+iname(16) = num2str(i);
+saveas(f, iname);
+
+disp(i)
+close all
+end
