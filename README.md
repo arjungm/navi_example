@@ -8,11 +8,14 @@ Jump Point Search can be read about here:
 * http://harablog.wordpress.com/2011/09/07/jump-point-search/
 * http://gamedevelopment.tutsplus.com/tutorials/how-to-speed-up-a-pathfinding-with-the-jump-point-search-algorithm--gamedev-5818
 
-Needs boost filesystem, system and program options installed. Also uses boost shared pointers liberally (as opposed to STL ones).
+Uses Boost that comes with Ubuntu 12.04 installations. Needs boost filesystem, system and program options installed.
 
 Build:
+
 $ cd navi_example
+
 $ make all
 
 Usage:
+
 $ ./navigate -e <DATASETFILE>
