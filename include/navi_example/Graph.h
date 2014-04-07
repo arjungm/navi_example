@@ -88,8 +88,8 @@ class Graph{
     void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<double>& costs );
     void getJumpPointSuccessors( const GraphState::Ptr& state, const GraphState::Ptr& parent, vector<GraphState::Ptr>& successors, vector<double>& costs );
     void getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& successors, vector<double>& costs );
-    bool jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost);
-    bool jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost);
+    bool jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
+    bool jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
     bool hasForced (const GraphState::Ptr& state,  const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs );
 
     /**

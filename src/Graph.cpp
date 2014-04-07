@@ -68,6 +68,7 @@ void Graph::getJumpPointSuccessors(const GraphState::Ptr& state, const GraphStat
                     Direction dir(dx[i], dy[j]);
                     if(verbose)
                         cout << "at " << state->coords << " dir =" << dir;
+                    //cin.get();
                     getJumpPointSuccessorsHelper(state, dir, successors, costs);
                 }
             }
@@ -84,13 +85,13 @@ void Graph::getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Di
     if(dir.isDiagonal()){
         if(verbose)
             cout << endl << "\t";
-        if(jumpHV(state, dir.dot(Direction(1,0)), jump, cost)){
+        if(jumpHV(state, dir.dot(Direction(1,0)), jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }        
         if(verbose)
             cout << "\t";
-        if(jumpHV(state, dir.dot(Direction(0,1)), jump, cost)){
+        if(jumpHV(state, dir.dot(Direction(0,1)), jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }        
@@ -100,14 +101,14 @@ void Graph::getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Di
         }
     }
     else{
-        if(jumpHV(state, dir, jump, cost)){
+        if(jumpHV(state, dir, jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }
     }
 }
 
-bool Graph::jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost){
+bool Graph::jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
     GraphState::Ptr current = boost::make_shared<GraphState>( state->coords );
     //cout << "\tat " << current->coords <<  " going " << dir;
     if( env_->isCollisionFree( current->coords ) ){
@@ -120,9 +121,9 @@ bool Graph::jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphSta
         else{
             vector<GraphState::Ptr> succs;
             vector<double> costs;
-            if( hasForced( current, dir, succs, costs ) ){
+            if( hasForced( current, dir, succs, costs ) && !start_flag){
                 if(verbose)
-                    cout << "has forced!" << endl;
+                    cout << "has forced at " << current->coords << endl;
                 jump = current;
                 return true;
             }
@@ -140,14 +141,14 @@ bool Graph::jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphSta
     }
 }
 
-bool Graph::jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost){
+bool Graph::jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
     vector<GraphState::Ptr> succs;
     vector<double> costs;
     GraphState::Ptr current = boost::make_shared<GraphState>( state->coords+dir );
     if(verbose)
         cout << "\tat " << current->coords << " going " << dir << endl;
     if(env_->isCollisionFree( current->coords )){
-        if(hasForced(state, dir, succs, costs)){
+        if(hasForced(state, dir, succs, costs) && !start_flag){
             if(verbose)
                 cout << "\tforced" << endl;
             jump = state;
@@ -156,14 +157,14 @@ bool Graph::jumpD( const GraphState::Ptr& state, const Direction& dir, GraphStat
         double dummy_cost;
         if(verbose)
             cout << "\thoriz ";
-        bool res_jump_h = jumpHV( current, dir.dot(Direction(1,0)), jump, dummy_cost);
+        bool res_jump_h = jumpHV( current, dir.dot(Direction(1,0)), jump, dummy_cost, true);
         if(res_jump_h){
             jump = current;
             return true;
         }
         if(verbose)
             cout << "\tvert ";
-        bool res_jump_v = jumpHV( current, dir.dot(Direction(0,1)), jump, dummy_cost);
+        bool res_jump_v = jumpHV( current, dir.dot(Direction(0,1)), jump, dummy_cost, true);
         if(res_jump_v){
             jump = current;
             return true;
