@@ -9,3 +9,10 @@ Jump Point Search can be read about here:
 * http://gamedevelopment.tutsplus.com/tutorials/how-to-speed-up-a-pathfinding-with-the-jump-point-search-algorithm--gamedev-5818
 
 Needs boost filesystem, system and program options installed. Also uses boost shared pointers liberally (as opposed to STL ones).
+
+Build:
+$ cd navi_example
+$ make all
+
+Usage:
+$ ./navigate -e <DATASETFILE>
