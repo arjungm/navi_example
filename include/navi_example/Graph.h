@@ -86,12 +86,71 @@ class Graph{
      * @param costs variable size list of costs for moving from the current state to the successor. For diagonal motions the cost is higher.
      */
     void getValidSuccessors( const GraphState::Ptr& state, vector<GraphState::Ptr>& successors, vector<double>& costs );
+    /**
+     * @brief this function generates the successors according to the Jump Point Search extension to A*
+     *
+     * If the parent is null, then all possible directions are tried leading from the current state
+     *
+     * @param state the graph state to generate the successors for
+     * @param parent the graph state that precedes the current state for determining direction fo approach
+     * @param successors the list of successor states
+     * @param costs the costs of reaching the successor states
+     */
     void getJumpPointSuccessors( const GraphState::Ptr& state, const GraphState::Ptr& parent, vector<GraphState::Ptr>& successors, vector<double>& costs );
+    /**
+     * @brief helper function to perform the jump point search successor generation.
+     *
+     * firstly this function generates the neighbors that are forced
+     * secondly function calls jumpHorizontallyVertically and jumpDiagonally depending on the passed in direction
+     * and identifies the jump points this way
+     *
+     * @param state the state to generate successors from
+     * @param dir the direction to jump in
+     * @param successors the list of successors
+     * @param costs the list of costs for the successors
+     */
     void getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& successors, vector<double>& costs );
-    bool jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
-    bool jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
-    bool hasForced (const GraphState::Ptr& state,  const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs );
-
+    /**
+     * @brief helper function for jumping horiztonally or vertically; it stops when it collides head on
+     * or if it detects the current state has a forced neighbor, or if current is a goal state
+     *
+     * @param state the state to generate successors from
+     * @param dir the direction to jump in
+     * @param jump the graphstate to jump to after it terminates; is null if no state is found
+     * @param cost the cost to reach the jump point identified above
+     * @param start_flag whether the state we are at is the first step in the jump search
+     * @return whether a jump is possible
+     */
+    bool jumpHorizontallyVertically( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
+    /**
+     * @brief helper function for jumping diagonally; it stops when it collides head on
+     * or if it detects the current state has a forced neighbor, or if current is a goal state
+     * or if it is unable to perform a horiztonal/vertical jump after the diagonal step
+     *
+     * @param state the state to generate successors from
+     * @param dir the direction to jump in
+     * @param jump the graphstate to jump to after it terminates; is null if no state is found
+     * @param cost the cost to reach the jump point identified above
+     * @param start_flag whether the state we are at is the first step in the jump search
+     * @return whether a jump is possible
+     */
+    bool jumpDiagonally( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag=false);
+    /**
+     * @brief checks if the current state and direction have a forced neighbor
+     * @param state current state
+     * @param dir direction heading in
+     * @return whether it has a forced neighbor
+     */
+    bool hasForced (const GraphState::Ptr& state, const Direction& dir);
+    /**
+     * @brief checks if the current state and direction have a forced neighbor and records them if able
+     * @param state current state
+     * @param dir direction heading in
+     * @param succs the list of forced neighbors
+     * @param costs the list of costs to forced neighbors
+     * @return whether it has a forced neighbor
+     */
+    bool getForced (const GraphState::Ptr& state,  const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs );
     /**
      * @brief checks if given state is a goal state
      * @param state current state
