@@ -3,7 +3,7 @@ fname = '../DataSets/set1_vis.txt';
 sname = '../DataSets/set1_sol.txt';
 iname = '../DataSets/set1_sol.png';
 
-for i=1:5
+for i=[1 2 3 5]
 
 f = figure('visible','off');
 
