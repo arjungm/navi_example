@@ -51,6 +51,9 @@ bool Planner::plan(vector<GraphState::Ptr>& path){
         SearchState::Ptr current = open_list_.front();
         pop_heap(open_list_.begin(), open_list_.end());
         open_list_.pop_back();
+        
+        if( current->parent_ )
+            cout << *(current->parent_->getGraphState()) << ", " << *(current->getGraphState()) << endl;
 
         num_expansions++;
         if((num_expansions%1000) == 0){
@@ -76,7 +79,11 @@ bool Planner::plan(vector<GraphState::Ptr>& path){
             //generate succs
             vector<double> costs;
             vector<GraphState::Ptr> successors;
-            graph_->getValidSuccessors( current->getGraphState(), successors, costs );
+
+            if( current->parent_ )
+                graph_->getJumpPointSuccessors( current->getGraphState(), current->parent_->getGraphState(), successors, costs );
+            else
+                graph_->getJumpPointSuccessors( current->getGraphState(), GraphState::Ptr(), successors, costs );
             
             //check succs in open and closed list
             for(size_t i=0; i<successors.size(); i++){
