@@ -11,11 +11,49 @@ Jump Point Search can be read about here:
 Uses Boost that comes with Ubuntu 12.04 installations. Needs boost filesystem, system and program options installed.
 
 Build:
+======
 
 $ cd navi_example
 
 $ make all
 
 Usage:
+======
 
 $ ./navigate -e \<PATH TO DATASETFILE\>
+
+Classes:
+========
+
+Cell:
+* simple (x,y) struct
+
+Direction
+* bearing in x-y coordinates
+
+Operations:
+* Cell + Direction = Cell
+* Cell - Cell = Direction
+
+Environment:
+* contains list of occupied cells
+* contains start cell and goal cell
+* performs collision checking
+
+GraphState:
+* Wrapper for Cell
+
+Graph:
+* uses Environment to generate successors for a graph state
+* also performs heuristic cost computation for a graph state
+
+SearchState:
+* Wrapper for GraphState
+* Also has g-value, or cost to come
+* Also has h-value, or cost to go
+
+Planner:
+* Main search algorithm
+* Has the graph
+* Has a open list (priority queue of SearchStates)
+* Has a closed list (hash table of SearchStates)
