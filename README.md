@@ -18,4 +18,4 @@ $ make all
 
 Usage:
 
-$ ./navigate -e <DATASETFILE>
+$ ./navigate -e \<DATASETFILE\>
