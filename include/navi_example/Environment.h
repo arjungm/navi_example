@@ -7,100 +7,11 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/unordered_set.hpp>
-#include <boost/functional/hash.hpp>
 #include <boost/property_tree/ptree.hpp>
 
+#include "navi_example/Cell.h"
+
 using namespace std;
-/**
- * @brief Struct to wrap grid world coordinates
- */
-struct Cell{
-  typedef boost::shared_ptr<Cell> Ptr;
-  typedef boost::shared_ptr<const Cell> ConstPtr;
-  /**
-   * @brief x coordinate
-   */
-  int x;
-  /**
-   * @brief y coordinate
-   */
-  int y;
-  /**
-   * @brief Empty constructor. 
-   *
-   * X and Y are set to 0.
-   */
-  Cell();
-  /**
-   * @brief Constructor that takes individual coordinates
-   *
-   * @param cx x coordinate
-   * @param cy y coordinate
-   */
-  Cell(int cx, int cy);
-  /**
-   * @brief Constructor that takes coordinates as a vector
-   *
-   * TODO If the number of elements in the vector are wrong
-   * then it should throw an exception.
-   * @param coords vector of coordinates
-   */
-  Cell(vector<int> coords);
-  /**
-   * @brief Assignment operator overload
-   *
-   * @param other another Cell instance
-   */
-  Cell& operator=(const Cell& other);
-};
-
-/**
- * @brief Operator overload for <<
- *
- * Used for easily printing out the coordinates
- * to an appropriate iostream
- * @param os ostream object (can be cout or ofstream)
- * @param cell Cell instance
- */
-ostream& operator<<(ostream& os, const Cell& cell);
-/**
- * @brief Comparison operator overload for Cell
- *
- * @param c1 left hand side Cell object
- * @param c2 right hand side Cell object
- * @return verity of the equality
- */
-bool operator==(Cell const& c1, Cell const& c2);
-/**
- * @brief overloading hash function for boost for Cell
- *
- * used for hashing when combined with boost hashtable
- * @param c Cell for computing hash value
- */
-size_t hash_value(Cell const& c);
-
-class Direction{
-    public:
-        typedef boost::shared_ptr<Direction> Ptr;
-        typedef boost::shared_ptr<const Direction> ConstPtr;
-        Direction();
-        Direction(double dx, double dy);
-        Direction dot(const Direction& d) const;
-        double getAngle() const;
-        void rotate(double angle);
-        double getX() const;
-        double getY() const;
-        bool isDiagonal() const;
-        double norm() const;
-    private:
-        double dx_;
-        double dy_;
-};
-
-Direction operator-(Cell lhs, Cell rhs);
-Cell operator+(Cell lhs, const Direction& rhs);
-ostream& operator<<(ostream& os, const Direction& dir);
-
 /**
  * @brief Class for the unbounded 2D gridded environment
  *
