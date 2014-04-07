@@ -79,6 +79,28 @@ bool operator==(Cell const& c1, Cell const& c2);
  */
 size_t hash_value(Cell const& c);
 
+class Direction{
+    public:
+        typedef boost::shared_ptr<Direction> Ptr;
+        typedef boost::shared_ptr<const Direction> ConstPtr;
+        Direction();
+        Direction(double dx, double dy);
+        Direction dot(const Direction& d) const;
+        double getAngle() const;
+        void rotate(double angle);
+        double getX() const;
+        double getY() const;
+        bool isDiagonal() const;
+        double norm() const;
+    private:
+        double dx_;
+        double dy_;
+};
+
+Direction operator-(Cell lhs, Cell rhs);
+Cell operator+(Cell lhs, const Direction& rhs);
+ostream& operator<<(ostream& os, const Direction& dir);
+
 /**
  * @brief Class for the unbounded 2D gridded environment
  *
