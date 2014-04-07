@@ -30,7 +30,7 @@
    <div id="projectname">navi_example
    
    </div>
-   <div id="projectbrief">Simple 2D gridworld navigation planning program</div>
+   <div id="projectbrief">A simple C++ implementation of A* applied to a unbounded 2D grid world planning problems. It showcases the effectiveness of Jump Point Search in speeding up navigation planning in 2D grid world.</div>
   </td>
   
   
@@ -82,11 +82,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_graph.html">Graph</a>, including all inherited members.<table>
   <tr bgcolor="#f0f0f0"><td><b>ConstPtr</b> typedef (defined in <a class="el" href="class_graph.html">Graph</a>)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#a978e25f8bf2e9fb8760d527b74bbc285">getForced</a>(const GraphState::Ptr &amp;state, const Direction &amp;dir, vector&lt; GraphState::Ptr &gt; &amp;succs, vector&lt; double &gt; &amp;costs)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_graph.html#a24c1e21da4bb89a29539a2a1d3c6baed">getHeuristicCost</a>(const GraphState::Ptr &amp;state)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#a9bbc9806e8a42d086876e391aa0c575a">getJumpPointSuccessors</a>(const GraphState::Ptr &amp;state, const GraphState::Ptr &amp;parent, vector&lt; GraphState::Ptr &gt; &amp;successors, vector&lt; double &gt; &amp;costs)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#a34cb4ef99f09f6aa3330eaa88e097f31">getJumpPointSuccessorsHelper</a>(const GraphState::Ptr &amp;state, const Direction &amp;dir, vector&lt; GraphState::Ptr &gt; &amp;successors, vector&lt; double &gt; &amp;costs)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_graph.html#a4de6e40cf94df5ae1e164d361e2ebac2">getStart</a>()</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_graph.html#a52790947468f8dbfa5c28bc1de1ba9b8">getValidSuccessors</a>(const GraphState::Ptr &amp;state, vector&lt; GraphState::Ptr &gt; &amp;successors, vector&lt; double &gt; &amp;costs)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_graph.html#af17d59fad8e889152f8367600d1a6094">Graph</a>(Environment::Ptr env)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#a9441ead74678874ba7eb491b01d23351">hasForced</a>(const GraphState::Ptr &amp;state, const Direction &amp;dir)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_graph.html#a25beff23a7b3791bc9828e5533ecc45c">isGoalState</a>(const GraphState::Ptr &amp;state)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#af21e26671325b794fda4b55ed5b576a1">jumpDiagonally</a>(const GraphState::Ptr &amp;state, const Direction &amp;dir, GraphState::Ptr &amp;jump, double &amp;cost, bool start_flag=false)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_graph.html#a76d3007090b5905c23537c81e9e024d6">jumpHorizontallyVertically</a>(const GraphState::Ptr &amp;state, const Direction &amp;dir, GraphState::Ptr &amp;jump, double &amp;cost, bool start_flag=false)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>Ptr</b> typedef (defined in <a class="el" href="class_graph.html">Graph</a>)</td><td><a class="el" href="class_graph.html">Graph</a></td><td></td></tr>
 </table></div><!-- contents -->
 <!-- window showing the filter options -->
@@ -106,7 +112,7 @@ This is the complete list of members for <a class="el" href="class_graph.html">G
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 6 2014 17:26:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 7 2014 19:42:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

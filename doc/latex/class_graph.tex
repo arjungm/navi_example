@@ -30,6 +30,18 @@ double \hyperlink{class_graph_a24c1e21da4bb89a29539a2a1d3c6baed}{get\-Heuristic\
 \begin{DoxyCompactList}\small\item\em gets the heuristic cost to the goal from the current state \end{DoxyCompactList}\item 
 void \hyperlink{class_graph_a52790947468f8dbfa5c28bc1de1ba9b8}{get\-Valid\-Successors} (const \-Graph\-State\-::\-Ptr \&state, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&successors, vector$<$ double $>$ \&costs)
 \begin{DoxyCompactList}\small\item\em gets the connected successors from the current state \end{DoxyCompactList}\item 
+void \hyperlink{class_graph_a9bbc9806e8a42d086876e391aa0c575a}{get\-Jump\-Point\-Successors} (const \-Graph\-State\-::\-Ptr \&state, const \-Graph\-State\-::\-Ptr \&parent, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&successors, vector$<$ double $>$ \&costs)
+\begin{DoxyCompactList}\small\item\em this function generates the successors according to the \-Jump \-Point \-Search extension to \-A$\ast$ \end{DoxyCompactList}\item 
+void \hyperlink{class_graph_a34cb4ef99f09f6aa3330eaa88e097f31}{get\-Jump\-Point\-Successors\-Helper} (const \-Graph\-State\-::\-Ptr \&state, const \hyperlink{class_direction}{\-Direction} \&dir, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&successors, vector$<$ double $>$ \&costs)
+\begin{DoxyCompactList}\small\item\em helper function to perform the jump point search successor generation. \end{DoxyCompactList}\item 
+bool \hyperlink{class_graph_a76d3007090b5905c23537c81e9e024d6}{jump\-Horizontally\-Vertically} (const \-Graph\-State\-::\-Ptr \&state, const \hyperlink{class_direction}{\-Direction} \&dir, \-Graph\-State\-::\-Ptr \&jump, double \&cost, bool start\-\_\-flag=false)
+\begin{DoxyCompactList}\small\item\em helper function for jumping horiztonally or vertically; it stops when it collides head on or if it detects the current state has a forced neighbor, or if current is a goal state \end{DoxyCompactList}\item 
+bool \hyperlink{class_graph_af21e26671325b794fda4b55ed5b576a1}{jump\-Diagonally} (const \-Graph\-State\-::\-Ptr \&state, const \hyperlink{class_direction}{\-Direction} \&dir, \-Graph\-State\-::\-Ptr \&jump, double \&cost, bool start\-\_\-flag=false)
+\begin{DoxyCompactList}\small\item\em helper function for jumping diagonally; it stops when it collides head on or if it detects the current state has a forced neighbor, or if current is a goal state or if it is unable to perform a horiztonal/vertical jump after the diagonal step \end{DoxyCompactList}\item 
+bool \hyperlink{class_graph_a9441ead74678874ba7eb491b01d23351}{has\-Forced} (const \-Graph\-State\-::\-Ptr \&state, const \hyperlink{class_direction}{\-Direction} \&dir)
+\begin{DoxyCompactList}\small\item\em checks if the current state and direction have a forced neighbor \end{DoxyCompactList}\item 
+bool \hyperlink{class_graph_a978e25f8bf2e9fb8760d527b74bbc285}{get\-Forced} (const \-Graph\-State\-::\-Ptr \&state, const \hyperlink{class_direction}{\-Direction} \&dir, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&succs, vector$<$ double $>$ \&costs)
+\begin{DoxyCompactList}\small\item\em checks if the current state and direction have a forced neighbor and records them if able \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_a25beff23a7b3791bc9828e5533ecc45c}{is\-Goal\-State} (const \-Graph\-State\-::\-Ptr \&state)
 \begin{DoxyCompactList}\small\item\em checks if given state is a goal state \end{DoxyCompactList}\item 
 \-Graph\-State\-::\-Ptr \hyperlink{class_graph_a4de6e40cf94df5ae1e164d361e2ebac2}{get\-Start} ()
@@ -44,6 +56,34 @@ bool \hyperlink{class_graph_a25beff23a7b3791bc9828e5533ecc45c}{is\-Goal\-State} 
 \-In order to extend \hyperlink{class_graph}{\-Graph} to have more nuanced motion primitves then a \-Motion\-Primitive class should be implemented, which would be used by \hyperlink{class_environment}{\-Environment} to generate real world successors. \hyperlink{class_graph}{\-Graph} would then discretize them to the appropriate \hyperlink{struct_graph_state}{\-Graph\-State}. 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_graph_a978e25f8bf2e9fb8760d527b74bbc285}{\index{\-Graph@{\-Graph}!get\-Forced@{get\-Forced}}
+\index{get\-Forced@{get\-Forced}!Graph@{\-Graph}}
+\subsubsection[{get\-Forced}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::get\-Forced} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const {\bf \-Direction} \&}]{dir, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{succs, }
+\item[{vector$<$ double $>$ \&}]{costs}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a978e25f8bf2e9fb8760d527b74bbc285}
+
+
+checks if the current state and direction have a forced neighbor and records them if able 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & current state \\
+\hline
+{\em dir} & direction heading in \\
+\hline
+{\em succs} & the list of forced neighbors \\
+\hline
+{\em costs} & the list of costs to forced neighbors \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether it has a forced neighbor 
+\end{DoxyReturn}
 \hypertarget{class_graph_a24c1e21da4bb89a29539a2a1d3c6baed}{\index{\-Graph@{\-Graph}!get\-Heuristic\-Cost@{get\-Heuristic\-Cost}}
 \index{get\-Heuristic\-Cost@{get\-Heuristic\-Cost}!Graph@{\-Graph}}
 \subsubsection[{get\-Heuristic\-Cost}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Graph\-::get\-Heuristic\-Cost} (
@@ -63,6 +103,60 @@ gets the heuristic cost to the goal from the current state
 \begin{DoxyReturn}{\-Returns}
 heuristic cost to the goal state 
 \end{DoxyReturn}
+\hypertarget{class_graph_a9bbc9806e8a42d086876e391aa0c575a}{\index{\-Graph@{\-Graph}!get\-Jump\-Point\-Successors@{get\-Jump\-Point\-Successors}}
+\index{get\-Jump\-Point\-Successors@{get\-Jump\-Point\-Successors}!Graph@{\-Graph}}
+\subsubsection[{get\-Jump\-Point\-Successors}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::get\-Jump\-Point\-Successors} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const \-Graph\-State\-::\-Ptr \&}]{parent, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{successors, }
+\item[{vector$<$ double $>$ \&}]{costs}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a9bbc9806e8a42d086876e391aa0c575a}
+
+
+this function generates the successors according to the \-Jump \-Point \-Search extension to \-A$\ast$ 
+
+\-If the parent is null, then all possible directions are tried leading from the current state
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & the graph state to generate the successors for \\
+\hline
+{\em parent} & the graph state that precedes the current state for determining direction fo approach \\
+\hline
+{\em successors} & the list of successor states \\
+\hline
+{\em costs} & the costs of reaching the successor states \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graph_a34cb4ef99f09f6aa3330eaa88e097f31}{\index{\-Graph@{\-Graph}!get\-Jump\-Point\-Successors\-Helper@{get\-Jump\-Point\-Successors\-Helper}}
+\index{get\-Jump\-Point\-Successors\-Helper@{get\-Jump\-Point\-Successors\-Helper}!Graph@{\-Graph}}
+\subsubsection[{get\-Jump\-Point\-Successors\-Helper}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::get\-Jump\-Point\-Successors\-Helper} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const {\bf \-Direction} \&}]{dir, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{successors, }
+\item[{vector$<$ double $>$ \&}]{costs}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a34cb4ef99f09f6aa3330eaa88e097f31}
+
+
+helper function to perform the jump point search successor generation. 
+
+firstly this function generates the neighbors that are forced secondly function calls jump\-Horizontally\-Vertically and jump\-Diagonally depending on the passed in direction and identifies the jump points this way
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & the state to generate successors from \\
+\hline
+{\em dir} & the direction to jump in \\
+\hline
+{\em successors} & the list of successors \\
+\hline
+{\em costs} & the list of costs for the successors \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_graph_a4de6e40cf94df5ae1e164d361e2ebac2}{\index{\-Graph@{\-Graph}!get\-Start@{get\-Start}}
 \index{get\-Start@{get\-Start}!Graph@{\-Graph}}
 \subsubsection[{get\-Start}]{\setlength{\rightskip}{0pt plus 5cm}\-Graph\-State\-::\-Ptr {\bf \-Graph\-::get\-Start} (
@@ -101,6 +195,28 @@ gets the connected successors from the current state
 {\em costs} & variable size list of costs for moving from the current state to the successor. \-For diagonal motions the cost is higher. \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_graph_a9441ead74678874ba7eb491b01d23351}{\index{\-Graph@{\-Graph}!has\-Forced@{has\-Forced}}
+\index{has\-Forced@{has\-Forced}!Graph@{\-Graph}}
+\subsubsection[{has\-Forced}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::has\-Forced} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const {\bf \-Direction} \&}]{dir}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a9441ead74678874ba7eb491b01d23351}
+
+
+checks if the current state and direction have a forced neighbor 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & current state \\
+\hline
+{\em dir} & direction heading in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether it has a forced neighbor 
+\end{DoxyReturn}
 \hypertarget{class_graph_a25beff23a7b3791bc9828e5533ecc45c}{\index{\-Graph@{\-Graph}!is\-Goal\-State@{is\-Goal\-State}}
 \index{is\-Goal\-State@{is\-Goal\-State}!Graph@{\-Graph}}
 \subsubsection[{is\-Goal\-State}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::is\-Goal\-State} (
@@ -119,6 +235,68 @@ checks if given state is a goal state
 \end{DoxyParams}
 \begin{DoxyReturn}{\-Returns}
 whether the current state is a goal 
+\end{DoxyReturn}
+\hypertarget{class_graph_af21e26671325b794fda4b55ed5b576a1}{\index{\-Graph@{\-Graph}!jump\-Diagonally@{jump\-Diagonally}}
+\index{jump\-Diagonally@{jump\-Diagonally}!Graph@{\-Graph}}
+\subsubsection[{jump\-Diagonally}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::jump\-Diagonally} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const {\bf \-Direction} \&}]{dir, }
+\item[{\-Graph\-State\-::\-Ptr \&}]{jump, }
+\item[{double \&}]{cost, }
+\item[{bool}]{start\-\_\-flag = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_graph_af21e26671325b794fda4b55ed5b576a1}
+
+
+helper function for jumping diagonally; it stops when it collides head on or if it detects the current state has a forced neighbor, or if current is a goal state or if it is unable to perform a horiztonal/vertical jump after the diagonal step 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & the state to generate successors from \\
+\hline
+{\em dir} & the direction to jump in \\
+\hline
+{\em jump} & the graphstate to jump to after it terminates; is null if no state is found \\
+\hline
+{\em cost} & the cost to reach the jump point identified above \\
+\hline
+{\em start\-\_\-flag} & whether the state we are at is the first step in the jump search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether a jump is possible 
+\end{DoxyReturn}
+\hypertarget{class_graph_a76d3007090b5905c23537c81e9e024d6}{\index{\-Graph@{\-Graph}!jump\-Horizontally\-Vertically@{jump\-Horizontally\-Vertically}}
+\index{jump\-Horizontally\-Vertically@{jump\-Horizontally\-Vertically}!Graph@{\-Graph}}
+\subsubsection[{jump\-Horizontally\-Vertically}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::jump\-Horizontally\-Vertically} (
+\begin{DoxyParamCaption}
+\item[{const \-Graph\-State\-::\-Ptr \&}]{state, }
+\item[{const {\bf \-Direction} \&}]{dir, }
+\item[{\-Graph\-State\-::\-Ptr \&}]{jump, }
+\item[{double \&}]{cost, }
+\item[{bool}]{start\-\_\-flag = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a76d3007090b5905c23537c81e9e024d6}
+
+
+helper function for jumping horiztonally or vertically; it stops when it collides head on or if it detects the current state has a forced neighbor, or if current is a goal state 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em state} & the state to generate successors from \\
+\hline
+{\em dir} & the direction to jump in \\
+\hline
+{\em jump} & the graphstate to jump to after it terminates; is null if no state is found \\
+\hline
+{\em cost} & the cost to reach the jump point identified above \\
+\hline
+{\em start\-\_\-flag} & whether the state we are at is the first step in the jump search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+whether a jump is possible 
 \end{DoxyReturn}
 
 

@@ -36,7 +36,13 @@ vector$<$ int $>$ \hyperlink{class_environment_a51c86c03c10f50b7fc366b134d66fdae
 \-Cell\-::\-Ptr \hyperlink{class_environment_a1eb91b74ba211896d9de8ac89da308ef}{get\-Goal} ()
 \begin{DoxyCompactList}\small\item\em getter for goal cell \end{DoxyCompactList}\item 
 \-Cell\-::\-Ptr \hyperlink{class_environment_adb44973d4cd3252e64e1c225c87ecd36}{get\-Start} ()
-\begin{DoxyCompactList}\small\item\em getter for start cell \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em getter for start cell \end{DoxyCompactList}\item 
+void \hyperlink{class_environment_ac062e5896149eeeb301eff829dd15ef5}{print\-Obstacles} (ostream \&os) const 
+\begin{DoxyCompactList}\small\item\em prints obstacles to ostream \end{DoxyCompactList}\item 
+void \hyperlink{class_environment_accdb216fa65e3d8b28cf28c8336ac37b}{print\-Start} (ostream \&os) const 
+\begin{DoxyCompactList}\small\item\em prints start to ostream \end{DoxyCompactList}\item 
+void \hyperlink{class_environment_a33d086c5e2cf1f9c0db2f80ca504330d}{print\-Goal} (ostream \&os) const 
+\begin{DoxyCompactList}\small\item\em prints goal to ostream \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
@@ -92,6 +98,54 @@ checks if a given \hyperlink{struct_cell}{\-Cell} is unoccupied
 \begin{DoxyReturn}{\-Returns}
 whether it is free 
 \end{DoxyReturn}
+\hypertarget{class_environment_a33d086c5e2cf1f9c0db2f80ca504330d}{\index{\-Environment@{\-Environment}!print\-Goal@{print\-Goal}}
+\index{print\-Goal@{print\-Goal}!Environment@{\-Environment}}
+\subsubsection[{print\-Goal}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Environment\-::print\-Goal} (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os}
+\end{DoxyParamCaption}
+) const}}\label{class_environment_a33d086c5e2cf1f9c0db2f80ca504330d}
+
+
+prints goal to ostream 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ostream} & to print to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_environment_ac062e5896149eeeb301eff829dd15ef5}{\index{\-Environment@{\-Environment}!print\-Obstacles@{print\-Obstacles}}
+\index{print\-Obstacles@{print\-Obstacles}!Environment@{\-Environment}}
+\subsubsection[{print\-Obstacles}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Environment\-::print\-Obstacles} (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os}
+\end{DoxyParamCaption}
+) const}}\label{class_environment_ac062e5896149eeeb301eff829dd15ef5}
+
+
+prints obstacles to ostream 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ostream} & to print to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_environment_accdb216fa65e3d8b28cf28c8336ac37b}{\index{\-Environment@{\-Environment}!print\-Start@{print\-Start}}
+\index{print\-Start@{print\-Start}!Environment@{\-Environment}}
+\subsubsection[{print\-Start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Environment\-::print\-Start} (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os}
+\end{DoxyParamCaption}
+) const}}\label{class_environment_accdb216fa65e3d8b28cf28c8336ac37b}
+
+
+prints start to ostream 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ostream} & to print to \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_environment_a51c86c03c10f50b7fc366b134d66fdae}{\index{\-Environment@{\-Environment}!read\-Coordinates@{read\-Coordinates}}
 \index{read\-Coordinates@{read\-Coordinates}!Environment@{\-Environment}}
 \subsubsection[{read\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ {\bf \-Environment\-::read\-Coordinates} (

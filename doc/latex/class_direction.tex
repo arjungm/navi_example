@@ -1,0 +1,165 @@
+\hypertarget{class_direction}{\section{\-Direction \-Class \-Reference}
+\label{class_direction}\index{\-Direction@{\-Direction}}
+}
+
+
+\hyperlink{class_direction}{\-Direction} class that represents the 8 possible motions in the grid.  
+
+
+
+
+{\ttfamily \#include $<$\-Cell.\-h$>$}
+
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_direction_ae3e9bc401f4a005ce80a2ec95ee36ba6}{typedef boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{class_direction}{\-Direction} $>$ {\bfseries \-Ptr}}\label{class_direction_ae3e9bc401f4a005ce80a2ec95ee36ba6}
+
+\item 
+\hypertarget{class_direction_a4b418e2afcca0589936a4b94629a2dbd}{typedef boost\-::shared\-\_\-ptr\*
+$<$ const \hyperlink{class_direction}{\-Direction} $>$ {\bfseries \-Const\-Ptr}}\label{class_direction_a4b418e2afcca0589936a4b94629a2dbd}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_direction_aba0c848f9db9831e6feb64d978e6d019}{\hyperlink{class_direction_aba0c848f9db9831e6feb64d978e6d019}{\-Direction} ()}\label{class_direction_aba0c848f9db9831e6feb64d978e6d019}
+
+\begin{DoxyCompactList}\small\item\em \-Empty constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_direction_abe8672abbbc5f540acaa0d2d03f4f237}{\hyperlink{class_direction_abe8672abbbc5f540acaa0d2d03f4f237}{\-Direction} (double dx, double dy)}\label{class_direction_abe8672abbbc5f540acaa0d2d03f4f237}
+
+\begin{DoxyCompactList}\small\item\em \-Constructor that takes in direction args. \end{DoxyCompactList}\item 
+\hyperlink{class_direction}{\-Direction} \hyperlink{class_direction_a675daed393d6147323e5e589df557999}{dot} (const \hyperlink{class_direction}{\-Direction} \&d) const 
+\begin{DoxyCompactList}\small\item\em returns the projection of this vector onto the other vector \end{DoxyCompactList}\item 
+double \hyperlink{class_direction_a861e9d6fc32edf132879a39798c88c97}{get\-Angle} () const 
+\begin{DoxyCompactList}\small\item\em gets the angular direction of the vector \end{DoxyCompactList}\item 
+void \hyperlink{class_direction_a2f492b12e0bdf68553a4507c480da1a7}{rotate} (double angle)
+\begin{DoxyCompactList}\small\item\em rotates the current direction by angle \end{DoxyCompactList}\item 
+double \hyperlink{class_direction_ab93777499ea06f7085ad13e2f5086ee3}{get\-X} () const 
+\begin{DoxyCompactList}\small\item\em gets the x component of the vector \end{DoxyCompactList}\item 
+double \hyperlink{class_direction_a4656656ec5200fef9270fc1d6b30954a}{get\-Y} () const 
+\begin{DoxyCompactList}\small\item\em gets the y component of the vector \end{DoxyCompactList}\item 
+bool \hyperlink{class_direction_a03fcabe30cb42a95dba773e05c467a28}{is\-Diagonal} () const 
+\begin{DoxyCompactList}\small\item\em check if the direction is a diagonal direction \end{DoxyCompactList}\item 
+double \hyperlink{class_direction_adce8bde567dc4c84b2fe9b1e089c0f1e}{norm} () const 
+\begin{DoxyCompactList}\small\item\em returns the length of the direction \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{class_direction}{\-Direction} class that represents the 8 possible motions in the grid. 
+
+\-It supports simple arithmetic like \-Cell+\-Direction = \hyperlink{struct_cell}{\-Cell} and \-Cell-\/\-Cell = \hyperlink{class_direction}{\-Direction} 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_direction_a675daed393d6147323e5e589df557999}{\index{\-Direction@{\-Direction}!dot@{dot}}
+\index{dot@{dot}!Direction@{\-Direction}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Direction} {\bf \-Direction\-::dot} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Direction} \&}]{d}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_a675daed393d6147323e5e589df557999}
+
+
+returns the projection of this vector onto the other vector 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em d} & the other direction vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the vector this is projected to 
+\end{DoxyReturn}
+\hypertarget{class_direction_a861e9d6fc32edf132879a39798c88c97}{\index{\-Direction@{\-Direction}!get\-Angle@{get\-Angle}}
+\index{get\-Angle@{get\-Angle}!Direction@{\-Direction}}
+\subsubsection[{get\-Angle}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Direction\-::get\-Angle} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_a861e9d6fc32edf132879a39798c88c97}
+
+
+gets the angular direction of the vector 
+
+\begin{DoxyReturn}{\-Returns}
+the angle in radians 
+\end{DoxyReturn}
+\hypertarget{class_direction_ab93777499ea06f7085ad13e2f5086ee3}{\index{\-Direction@{\-Direction}!get\-X@{get\-X}}
+\index{get\-X@{get\-X}!Direction@{\-Direction}}
+\subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Direction\-::get\-X} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_ab93777499ea06f7085ad13e2f5086ee3}
+
+
+gets the x component of the vector 
+
+\begin{DoxyReturn}{\-Returns}
+the x component 
+\end{DoxyReturn}
+\hypertarget{class_direction_a4656656ec5200fef9270fc1d6b30954a}{\index{\-Direction@{\-Direction}!get\-Y@{get\-Y}}
+\index{get\-Y@{get\-Y}!Direction@{\-Direction}}
+\subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Direction\-::get\-Y} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_a4656656ec5200fef9270fc1d6b30954a}
+
+
+gets the y component of the vector 
+
+\begin{DoxyReturn}{\-Returns}
+the y component 
+\end{DoxyReturn}
+\hypertarget{class_direction_a03fcabe30cb42a95dba773e05c467a28}{\index{\-Direction@{\-Direction}!is\-Diagonal@{is\-Diagonal}}
+\index{is\-Diagonal@{is\-Diagonal}!Direction@{\-Direction}}
+\subsubsection[{is\-Diagonal}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Direction\-::is\-Diagonal} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_a03fcabe30cb42a95dba773e05c467a28}
+
+
+check if the direction is a diagonal direction 
+
+\begin{DoxyReturn}{\-Returns}
+verity of whether it is diagonal 
+\end{DoxyReturn}
+\hypertarget{class_direction_adce8bde567dc4c84b2fe9b1e089c0f1e}{\index{\-Direction@{\-Direction}!norm@{norm}}
+\index{norm@{norm}!Direction@{\-Direction}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Direction\-::norm} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_direction_adce8bde567dc4c84b2fe9b1e089c0f1e}
+
+
+returns the length of the direction 
+
+\begin{DoxyReturn}{\-Returns}
+the length of the direction vector 
+\end{DoxyReturn}
+\hypertarget{class_direction_a2f492b12e0bdf68553a4507c480da1a7}{\index{\-Direction@{\-Direction}!rotate@{rotate}}
+\index{rotate@{rotate}!Direction@{\-Direction}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Direction\-::rotate} (
+\begin{DoxyParamCaption}
+\item[{double}]{angle}
+\end{DoxyParamCaption}
+)}}\label{class_direction_a2f492b12e0bdf68553a4507c480da1a7}
+
+
+rotates the current direction by angle 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em angle} & the amount to rotate the current vector by \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/navi\-\_\-example/\-Cell.\-h\item 
+src/\-Cell.\-cpp\end{DoxyCompactItemize}

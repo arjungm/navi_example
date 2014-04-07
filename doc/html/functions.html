@@ -30,7 +30,7 @@
    <div id="projectname">navi_example
    
    </div>
-   <div id="projectbrief">Simple 2D gridworld navigation planning program</div>
+   <div id="projectbrief">A simple C++ implementation of A* applied to a unbounded 2D grid world planning problems. It showcases the effectiveness of Jump Point Search in speeding up navigation planning in 2D grid world.</div>
   </td>
   
   
@@ -81,20 +81,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_j"><span>j</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_x"><span>x</span></a></li>
+      <li><a href="#index_y"><span>y</span></a></li>
+    </ul>
+  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div><ul>
+<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>Cell()
 : <a class="el" href="struct_cell.html#a394510643e8664cf12b5efaf5cb99f71">Cell</a>
 </li>
 <li>coords
 : <a class="el" href="struct_graph_state.html#a6f914ad5bc7f1fbe27f54cdd52aec8ae">GraphState</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>Direction()
+: <a class="el" href="class_direction.html#aba0c848f9db9831e6feb64d978e6d019">Direction</a>
+</li>
+<li>dot()
+: <a class="el" href="class_direction.html#a675daed393d6147323e5e589df557999">Direction</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
 <li>Environment()
 : <a class="el" href="class_environment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>g
 : <a class="el" href="struct_search_state.html#ae9e94610d90e5c170fd526616a7e76c0">SearchState</a>
+</li>
+<li>getAngle()
+: <a class="el" href="class_direction.html#a861e9d6fc32edf132879a39798c88c97">Direction</a>
+</li>
+<li>getForced()
+: <a class="el" href="class_graph.html#a978e25f8bf2e9fb8760d527b74bbc285">Graph</a>
 </li>
 <li>getGoal()
 : <a class="el" href="class_environment.html#a1eb91b74ba211896d9de8ac89da308ef">Environment</a>
@@ -105,12 +150,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getHeuristicCost()
 : <a class="el" href="class_graph.html#a24c1e21da4bb89a29539a2a1d3c6baed">Graph</a>
 </li>
+<li>getJumpPointSuccessors()
+: <a class="el" href="class_graph.html#a9bbc9806e8a42d086876e391aa0c575a">Graph</a>
+</li>
+<li>getJumpPointSuccessorsHelper()
+: <a class="el" href="class_graph.html#a34cb4ef99f09f6aa3330eaa88e097f31">Graph</a>
+</li>
 <li>getStart()
 : <a class="el" href="class_environment.html#adb44973d4cd3252e64e1c225c87ecd36">Environment</a>
 , <a class="el" href="class_graph.html#a4de6e40cf94df5ae1e164d361e2ebac2">Graph</a>
 </li>
 <li>getValidSuccessors()
 : <a class="el" href="class_graph.html#a52790947468f8dbfa5c28bc1de1ba9b8">Graph</a>
+</li>
+<li>getX()
+: <a class="el" href="class_direction.html#ab93777499ea06f7085ad13e2f5086ee3">Direction</a>
+</li>
+<li>getY()
+: <a class="el" href="class_direction.html#a4656656ec5200fef9270fc1d6b30954a">Direction</a>
 </li>
 <li>Graph()
 : <a class="el" href="class_graph.html#af17d59fad8e889152f8367600d1a6094">Graph</a>
@@ -121,19 +178,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GraphState()
 : <a class="el" href="struct_graph_state.html#adc1780238486cf440e5dff8e17475098">GraphState</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>h
 : <a class="el" href="struct_search_state.html#ab7787161bd4feed172ba342999333132">SearchState</a>
 </li>
+<li>hasForced()
+: <a class="el" href="class_graph.html#a9441ead74678874ba7eb491b01d23351">Graph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>isCollisionFree()
 : <a class="el" href="class_environment.html#a3c7c3a42c761f7b44a65cd54df53aee6">Environment</a>
+</li>
+<li>isDiagonal()
+: <a class="el" href="class_direction.html#a03fcabe30cb42a95dba773e05c467a28">Direction</a>
 </li>
 <li>isGoalState()
 : <a class="el" href="class_graph.html#a25beff23a7b3791bc9828e5533ecc45c">Graph</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_j"></a>- j -</h3><ul>
+<li>jumpDiagonally()
+: <a class="el" href="class_graph.html#af21e26671325b794fda4b55ed5b576a1">Graph</a>
+</li>
+<li>jumpHorizontallyVertically()
+: <a class="el" href="class_graph.html#a76d3007090b5905c23537c81e9e024d6">Graph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>norm()
+: <a class="el" href="class_direction.html#adce8bde567dc4c84b2fe9b1e089c0f1e">Direction</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>operator=()
 : <a class="el" href="struct_cell.html#ac1c53fcae0c0be453d0312310ed80fc9">Cell</a>
 , <a class="el" href="struct_graph_state.html#aa64149fdf50125585ddf76b2b795c73d">GraphState</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>parent_
 : <a class="el" href="struct_search_state.html#ac1cad42afd15a5bcc22ec6b658040c34">SearchState</a>
 </li>
@@ -143,24 +239,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Planner()
 : <a class="el" href="class_planner.html#ab7ced6e144f0ca732c59e1e34de2382b">Planner</a>
 </li>
+<li>printGoal()
+: <a class="el" href="class_environment.html#a33d086c5e2cf1f9c0db2f80ca504330d">Environment</a>
+</li>
+<li>printObstacles()
+: <a class="el" href="class_environment.html#ac062e5896149eeeb301eff829dd15ef5">Environment</a>
+</li>
+<li>printStart()
+: <a class="el" href="class_environment.html#accdb216fa65e3d8b28cf28c8336ac37b">Environment</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>readCoordinates()
 : <a class="el" href="class_environment.html#a51c86c03c10f50b7fc366b134d66fdae">Environment</a>
 </li>
 <li>readDescription()
 : <a class="el" href="class_environment.html#a79909fe4c211b4cf8de7108fe4b01946">Environment</a>
 </li>
+<li>rotate()
+: <a class="el" href="class_direction.html#a2f492b12e0bdf68553a4507c480da1a7">Direction</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>SearchState()
 : <a class="el" href="struct_search_state.html#afabe4bfbc9658c0e9d2a4a6a452cee3f">SearchState</a>
 </li>
 <li>setGraphState()
 : <a class="el" href="struct_search_state.html#a93576ac604beb57d4c09f0ff3a0587c9">SearchState</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
 <li>unwind()
 : <a class="el" href="class_planner.html#aa054eca4b15676cc7e3d334e6bae5609">Planner</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_x"></a>- x -</h3><ul>
 <li>x
 : <a class="el" href="struct_cell.html#ac008158796a0bfdf37be2f26eff651ef">Cell</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_y"></a>- y -</h3><ul>
 <li>y
 : <a class="el" href="struct_cell.html#ab99a0cead05c6b8129ddf3231b11c1ad">Cell</a>
 </li>
@@ -183,7 +311,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 6 2014 17:26:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 7 2014 19:42:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -30,7 +30,7 @@
    <div id="projectname">navi_example
    
    </div>
-   <div id="projectbrief">Simple 2D gridworld navigation planning program</div>
+   <div id="projectbrief">A simple C++ implementation of A* applied to a unbounded 2D grid world planning problems. It showcases the effectiveness of Jump Point Search in speeding up navigation planning in 2D grid world.</div>
   </td>
   
   
@@ -114,6 +114,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for goal cell  <a href="#a1eb91b74ba211896d9de8ac89da308ef"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Cell::Ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_environment.html#adb44973d4cd3252e64e1c225c87ecd36">getStart</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for start cell  <a href="#adb44973d4cd3252e64e1c225c87ecd36"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_environment.html#ac062e5896149eeeb301eff829dd15ef5">printObstacles</a> (ostream &amp;os) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">prints obstacles to ostream  <a href="#ac062e5896149eeeb301eff829dd15ef5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_environment.html#accdb216fa65e3d8b28cf28c8336ac37b">printStart</a> (ostream &amp;os) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">prints start to ostream  <a href="#accdb216fa65e3d8b28cf28c8336ac37b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_environment.html#a33d086c5e2cf1f9c0db2f80ca504330d">printGoal</a> (ostream &amp;os) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">prints goal to ostream  <a href="#a33d086c5e2cf1f9c0db2f80ca504330d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Class for the unbounded 2D gridded environment. </p>
@@ -180,6 +186,81 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>whether it is free </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a33d086c5e2cf1f9c0db2f80ca504330d"></a><!-- doxytag: member="Environment::printGoal" ref="a33d086c5e2cf1f9c0db2f80ca504330d" args="(ostream &amp;os) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_environment.html#a33d086c5e2cf1f9c0db2f80ca504330d">Environment::printGoal</a> </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>prints goal to ostream </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ostream</td><td>to print to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac062e5896149eeeb301eff829dd15ef5"></a><!-- doxytag: member="Environment::printObstacles" ref="ac062e5896149eeeb301eff829dd15ef5" args="(ostream &amp;os) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_environment.html#ac062e5896149eeeb301eff829dd15ef5">Environment::printObstacles</a> </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>prints obstacles to ostream </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ostream</td><td>to print to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="accdb216fa65e3d8b28cf28c8336ac37b"></a><!-- doxytag: member="Environment::printStart" ref="accdb216fa65e3d8b28cf28c8336ac37b" args="(ostream &amp;os) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_environment.html#accdb216fa65e3d8b28cf28c8336ac37b">Environment::printStart</a> </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>prints start to ostream </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ostream</td><td>to print to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -258,7 +339,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 6 2014 17:26:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 7 2014 19:42:33 for navi_example by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
