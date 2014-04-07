@@ -44,7 +44,8 @@ GraphState:
 * Wrapper for Cell
 
 Graph:
-* uses Environment to generate successors for a graph state
+* uses Jump Point Search to generate successors (i.e. creates edges)
+* uses Environment to check if graph state is collision free
 * also performs heuristic cost computation for a graph state
 
 SearchState:
