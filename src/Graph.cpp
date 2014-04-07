@@ -51,24 +51,22 @@ GraphState::Ptr Graph::getStart(){
 
 
 void Graph::getJumpPointSuccessors(const GraphState::Ptr& state, const GraphState::Ptr& parent, vector<GraphState::Ptr>& successors, vector<double>& costs ){
+    //if the parent exists then this is not the first state in the search
     if(parent){
         Direction dir = (state->coords) - (parent->coords);
-        if(verbose)
-            cout << "at " << state->coords << " dir =" << dir;
         getJumpPointSuccessorsHelper(state, dir, successors, costs);
     }
+    //this is the first state in the search
     else{
         int dx[] = {1,0,-1};
         int dy[] = {0,1,-1};
-
+        
+        //iterate over all possible directions from start to begin the search
         for(size_t i=0; i<3; i++){
             for(size_t j=0; j<3; j++){
                 
                 if(!(j==0 && i==1)){
                     Direction dir(dx[i], dy[j]);
-                    if(verbose)
-                        cout << "at " << state->coords << " dir =" << dir;
-                    //cin.get();
                     getJumpPointSuccessorsHelper(state, dir, successors, costs);
                 }
             }
@@ -77,107 +75,109 @@ void Graph::getJumpPointSuccessors(const GraphState::Ptr& state, const GraphStat
 }
 
 void Graph::getJumpPointSuccessorsHelper( const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& successors, vector<double>& costs ){
-    if(hasForced(state, dir, successors, costs)){
-        //add to successors and costs
+    //add forced neighbors is available for current state
+    if(getForced(state, dir, successors, costs)){
+        //this function adds forced neighbors if available
     }
     GraphState::Ptr jump;
     double cost;
+    //get the next jump point depending on the current states direction
     if(dir.isDiagonal()){
-        if(verbose)
-            cout << endl << "\t";
-        if(jumpHV(state, dir.dot(Direction(1,0)), jump, cost, true)){
+        //if we are jumping diagonally, start off with a horizontal and vertical
+        //pass in the true flag because it is the first jumping test
+        if(jumpHorizontallyVertically(state, dir.dot(Direction(1,0)), jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }        
-        if(verbose)
-            cout << "\t";
-        if(jumpHV(state, dir.dot(Direction(0,1)), jump, cost, true)){
+        if(jumpHorizontallyVertically(state, dir.dot(Direction(0,1)), jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }        
-        if(jumpD(state, dir, jump, cost)){
+        //then jump diagonally from the starting state
+        if(jumpDiagonally(state, dir, jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }
     }
     else{
-        if(jumpHV(state, dir, jump, cost, true)){
+        //if we are jumping horizontally / vertically proceed as normal
+        if(jumpHorizontallyVertically(state, dir, jump, cost, true)){
             successors.push_back(jump);
             costs.push_back(cost);
         }
     }
 }
 
-bool Graph::jumpHV( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
+bool Graph::jumpHorizontallyVertically( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
     GraphState::Ptr current = boost::make_shared<GraphState>( state->coords );
-    //cout << "\tat " << current->coords <<  " going " << dir;
+    //if the state we are at is collision free
     if( env_->isCollisionFree( current->coords ) ){
         if( isGoalState( current ) ){
-            if(verbose)
-                cout << "is goal!" << endl;
             jump = current;
             return true;
         }
         else{
-            vector<GraphState::Ptr> succs;
-            vector<double> costs;
-            if( hasForced( current, dir, succs, costs ) && !start_flag){
-                if(verbose)
-                    cout << "has forced at " << current->coords << endl;
+            //if the state has a forced neighbor, stop jumping and add state as jump point
+            if( hasForced( current, dir) && !start_flag){
                 jump = current;
                 return true;
             }
             else{
                 cost += dir.norm();
+                //generate next step
                 GraphState::Ptr next = boost::make_shared<GraphState>(current->coords + dir);
-                return jumpHV( next, dir, jump, cost);
+                //continue jumping
+                return jumpHorizontallyVertically( next, dir, jump, cost);
             }
         }
     }
     else{
-        if(verbose)
-            cout << "collided!" << endl;
         return false;//current is blocked
     }
 }
 
-bool Graph::jumpD( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
-    vector<GraphState::Ptr> succs;
-    vector<double> costs;
+bool Graph::jumpDiagonally( const GraphState::Ptr& state, const Direction& dir, GraphState::Ptr& jump, double& cost, bool start_flag){
+    //get diagonal step
     GraphState::Ptr current = boost::make_shared<GraphState>( state->coords+dir );
-    if(verbose)
-        cout << "\tat " << current->coords << " going " << dir << endl;
+    //if the digaonal step is collision free
     if(env_->isCollisionFree( current->coords )){
-        if(hasForced(state, dir, succs, costs) && !start_flag){
-            if(verbose)
-                cout << "\tforced" << endl;
+        //if we jumped to the goal, then we can stop
+        //and add the goal as a jump point
+        if( isGoalState( current ) ){
+            jump = current;
+            return true;
+        }
+        //if the place we came from has forced neighbor
+        //and if it is not the first diagonal step taken
+        if(hasForced(state, dir) && !start_flag){
             jump = state;
             return true;
         }
+        //test if you can jump horizontally and vertically after the diagonal step
+        //if you can then add the current diagonal step as a jump point
         double dummy_cost;
-        if(verbose)
-            cout << "\thoriz ";
-        bool res_jump_h = jumpHV( current, dir.dot(Direction(1,0)), jump, dummy_cost, true);
+        bool res_jump_h = jumpHorizontallyVertically( current, dir.dot(Direction(1,0)), jump, dummy_cost, true);
         if(res_jump_h){
             jump = current;
             return true;
         }
-        if(verbose)
-            cout << "\tvert ";
-        bool res_jump_v = jumpHV( current, dir.dot(Direction(0,1)), jump, dummy_cost, true);
+        bool res_jump_v = jumpHorizontallyVertically( current, dir.dot(Direction(0,1)), jump, dummy_cost, true);
         if(res_jump_v){
             jump = current;
             return true;
         }
+        //otherwise continue jumping digaonally
         cost += dir.norm();
-        return jumpD(current, dir, jump, cost);
+        return jumpDiagonally(current, dir, jump, cost);
     }
+    //unable to continue jumping diagonally this way
     else
         return false;
 }
 
 
-bool Graph::hasForced (const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs){
+bool Graph::hasForced (const GraphState::Ptr& state, const Direction& dir){
+    //get the positions to check
     Direction dir_free1 = dir;
     Direction dir_free2 = dir;
     Direction dir_block1 = dir;
@@ -199,6 +199,33 @@ bool Graph::hasForced (const GraphState::Ptr& state, const Direction& dir, vecto
     res1 = env_->isCollisionFree( state->coords + dir_free1 ) && !env_->isCollisionFree( state->coords + dir_block1 );
     res2 = env_->isCollisionFree( state->coords + dir_free2 ) && !env_->isCollisionFree( state->coords + dir_block2 );
 
+    return res1||res2;
+}
+
+bool Graph::getForced (const GraphState::Ptr& state, const Direction& dir, vector<GraphState::Ptr>& succs, vector<double>& costs){
+    Direction dir_free1 = dir;
+    Direction dir_free2 = dir;
+    Direction dir_block1 = dir;
+    Direction dir_block2 = dir;
+    
+    bool res1, res2; 
+    // get the positiosn to check for being blocked or free based on the current direction
+    if( dir.isDiagonal() ){
+        dir_free1.rotate(M_PI/2);
+        dir_free2.rotate(-M_PI/2);
+        dir_block1.rotate(3*M_PI/4);
+        dir_block2.rotate(-3*M_PI/4);
+    }
+    else{
+        dir_free1.rotate(M_PI/4);
+        dir_free2.rotate(-M_PI/4);
+        dir_block1.rotate(M_PI/2);
+        dir_block2.rotate(-M_PI/2);
+    }
+    res1 = env_->isCollisionFree( state->coords + dir_free1 ) && !env_->isCollisionFree( state->coords + dir_block1 );
+    res2 = env_->isCollisionFree( state->coords + dir_free2 ) && !env_->isCollisionFree( state->coords + dir_block2 );
+
+    //add the free state if there is a forced neighbor
     GraphState::Ptr succ;
     if(res1){
         succ = boost::make_shared<GraphState>( state->coords + dir_free1 );
