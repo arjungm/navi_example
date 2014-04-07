@@ -8,6 +8,9 @@ SRCDIR := src
 
 TARGET := navigate
 
+Cell.o: $(SRCDIR)/Cell.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/Cell.cpp
+
 Environment.o: $(SRCDIR)/Environment.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/Environment.cpp
 
@@ -20,7 +23,7 @@ Planner.o: $(SRCDIR)/Planner.cpp
 main.o: $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $(SRCDIR)/main.cpp
 
-all: Environment.o Graph.o Planner.o main.o
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) Environment.o Graph.o Planner.o main.o $(LFLAGS)
+all: Cell.o Environment.o Graph.o Planner.o main.o
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) Cell.o Environment.o Graph.o Planner.o main.o $(LFLAGS)
 
 #end
