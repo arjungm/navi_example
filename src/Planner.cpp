@@ -129,9 +129,25 @@ bool Planner::plan(vector<GraphState::Ptr>& path){
 void Planner::unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& plan){
     SearchState::Ptr current=state;
     while(current->parent_){
-        plan.push_back(current->getGraphState());
+        interpolate(current, current->parent_, plan);
         current = current->parent_;
     }
     plan.push_back(current->getGraphState());
     reverse(plan.begin(), plan.end());
 }
+
+void Planner::interpolate(const SearchState::Ptr& from_state, const SearchState::Ptr& to_state, vector<GraphState::Ptr>& plan){
+    GraphState::Ptr from_gstate = from_state->getGraphState();
+    GraphState::Ptr to_gstate = to_state->getGraphState();
+    
+    Direction dir = to_gstate->coords - from_gstate->coords;
+    //copy start
+    GraphState::Ptr current = boost::make_shared<GraphState>(from_gstate->coords);
+
+    //add intermediate steps by add the direction until you reach the to_state
+    while( !(current->coords==to_gstate->coords) ){
+        plan.push_back(current);
+        current = boost::make_shared<GraphState>( current->coords + dir );
+    }
+}
+

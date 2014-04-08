@@ -120,6 +120,14 @@ class Planner{
      * @param plan the list of graph states in the plan
      */
     void unwind(const SearchState::Ptr& state, vector<GraphState::Ptr>& plan);
+    /**
+     * @brief gets the intermediate states between two states with only using diagonal, horizontal, or vertical steps
+     *
+     * @param from_state SearchState* to the state we are starting from
+     * @param to_state SearchState* to the state we want to stop before
+     * @param plan the vector of graph states for the final plan
+     */
+    void interpolate(const SearchState::Ptr& from_state, const SearchState::Ptr& to_state, vector<GraphState::Ptr>& plan);
   private:
     /**
      * @brief Environment pointer with the start, goal, and obstacle information
