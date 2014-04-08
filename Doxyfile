@@ -38,7 +38,7 @@ PROJECT_NUMBER         =
 # for a project that appears at the top of each page and should give viewer 
 # a quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "A simple C++ implementation of A* applied to a unbounded 2D grid world planning problems. It showcases the effectiveness of Jump Point Search in speeding up navigation planning in 2D grid world."
+PROJECT_BRIEF          = "simple C++ implementation of A* applied to a unbounded 2D grid world planning problems. It showcases the effectiveness of Jump Point Search in speeding up navigation planning in 2D grid world."
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is 
 # included in the documentation. The maximum height of the logo should not 

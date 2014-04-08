@@ -34,7 +34,9 @@ $<$ \hyperlink{class_planner}{\-Planner} const  $>$ {\bfseries \-Const\-Ptr}}\la
 bool \hyperlink{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{plan} (vector$<$ \-Graph\-State\-::\-Ptr $>$ \&path)
 \begin{DoxyCompactList}\small\item\em starts the planner to search for a path \end{DoxyCompactList}\item 
 void \hyperlink{class_planner_aa054eca4b15676cc7e3d334e6bae5609}{unwind} (const \-Search\-State\-::\-Ptr \&state, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&\hyperlink{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{plan})
-\begin{DoxyCompactList}\small\item\em helper function for unrolling the discovered path \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em helper function for unrolling the discovered path \end{DoxyCompactList}\item 
+void \hyperlink{class_planner_a233641a9be15517565338788ba5e8bfc}{interpolate} (const \-Search\-State\-::\-Ptr \&from\-\_\-state, const \-Search\-State\-::\-Ptr \&to\-\_\-state, vector$<$ \-Graph\-State\-::\-Ptr $>$ \&\hyperlink{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{plan})
+\begin{DoxyCompactList}\small\item\em gets the intermediate states between two states with only using diagonal, horizontal, or vertical steps \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
@@ -65,6 +67,28 @@ constructor for the planner
 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_planner_a233641a9be15517565338788ba5e8bfc}{\index{\-Planner@{\-Planner}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!Planner@{\-Planner}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Planner\-::interpolate} (
+\begin{DoxyParamCaption}
+\item[{const \-Search\-State\-::\-Ptr \&}]{from\-\_\-state, }
+\item[{const \-Search\-State\-::\-Ptr \&}]{to\-\_\-state, }
+\item[{vector$<$ \-Graph\-State\-::\-Ptr $>$ \&}]{plan}
+\end{DoxyParamCaption}
+)}}\label{class_planner_a233641a9be15517565338788ba5e8bfc}
+
+
+gets the intermediate states between two states with only using diagonal, horizontal, or vertical steps 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em from\-\_\-state} & \-Search\-State$\ast$ to the state we are starting from \\
+\hline
+{\em to\-\_\-state} & \-Search\-State$\ast$ to the state we want to stop before \\
+\hline
+{\em plan} & the vector of graph states for the final plan \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_planner_ae4fa0f802bd7a15d6d95ce06edb409ac}{\index{\-Planner@{\-Planner}!plan@{plan}}
 \index{plan@{plan}!Planner@{\-Planner}}
 \subsubsection[{plan}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Planner\-::plan} (
